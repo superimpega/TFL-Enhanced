@@ -3,6 +3,7 @@ if (meshkaEnhanced !== undefined)
 String.prototype.equalsIgnoreCase = function(other) {
     return this.toLowerCase() === other.toLowerCase();
 };
+var plugCubed;
 var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
@@ -19,17 +20,6 @@ var meshkaEnhancedModel = Class.extend({
             + '#userinterface p {background-color: #0b0b0b; display:block; width:75px; padding:8px; text-align:center; color: #fff; font-size: 13px; font-variant: small-caps;}'
             + '#userinterface p:hover {background-color: #3C3C3C}'
         + '</style>');
-        this.proxy = {
-            menu: {
-                onWootClick:    $.proxy(this.onWootClick,   this),
-                onJoinClick:    $.proxy(this.onJoinClick,   this),
-                onVideoClick:   $.proxy(this.onVideoClick,  this),
-                onStreamClick:  $.proxy(this.onStreamClick, this),
-                onKillClick:    $.proxy(this.onKillClick,   this)
-            },
-            onDjAdvance:          $.proxy(this.onDjAdvance,     this),
-        };
-        API.addEventListener(API.DJ_ADVANCE,this.proxy.onDjAdvance)
         var words = {
             // Syntax: 'Search word' : 'Replace word',
             "Points" : "Points",
@@ -104,6 +94,7 @@ var meshkaEnhancedModel = Class.extend({
         }
         Models.chat.chatCommand = ChatModel.chatCommand
         log('<span style="color:#FF0000"><i>Running IFZ Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
+        if (plugCubed == undefined) $.getScript("https://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
     },
     close: function(){
         $('#meshka-css').remove();
@@ -145,254 +136,6 @@ var meshkaEnhancedModel = Class.extend({
             }, a.message = b, this.receive(a), !0) : !1
         }
         Models.chat.chatCommand = ChatModel.chatCommand
-    },
-    data: {
-        woot: true,
-        join: false,
-        userlist: true,
-        notify: false
     }
-
 });
 var meshkaEnhanced = new meshkaEnhancedModel;
-function initAPIListeners() 
-{
-    API.addEventListener(API.DJ_ADVANCE, djAdvanced);
-    API.addEventListener(API.VOTE_UPDATE, function(obj) {
-        if (userList)
-            populateUserlist();
-    });
-    API.addEventListener(API.CURATE_UPDATE, function(obj) {
-        if(meshkaEnhanced.data.notify)
-        appendToChat(obj.user.username + " added " + Models.room.data.media.author + " - " + Models.room.data.media.title, null, "#00FF00");
-        if (userList)
-            populateUserlist();
-    });
-    API.addEventListener(API.USER_JOIN, function(user) {
-        if (meshkaEnhanced.data.notify){
-        appendToChat(user.username + " joined the room", null, "#3366FF");
-        }
-        if(API.getUser(user.id).mehcount===undefined){
-        API.getUser(user.id).mehcount=0
-        }
-        if (userList)
-            populateUserlist();
-    });
-    API.addEventListener(API.USER_LEAVE, function(user) {
-        if (meshkaEnhanced.data.notify){
-        appendToChat(user.username + " left the room", null, "#3366FF");
-        }
-        if (userList)
-            populateUserlist();
-    });
-}
-
-function displayUI() {
-    $('#plugbot-ui').remove();
-    $('#playback-container').append('<div id="plugbot-ui"></div>');
-    $('#plugbot-ui').append(
-        '<ul>' +
-        '<li id="plugbot-btn"><p id="plugbot-btn-woot" style="color:#3FFF00";>autowoot</p></li>' +
-        '<li id="plugbot-btn"><p id="plugbot-btn-queue" style="color:#ED1C24">autojoin</p></li>' +
-        '<li id="plugbot-btn"><p id="plugbot-btn-userlist" style="color:#3FFF00">userlist</p></li>' +
-        '<li id="plugbot-btn"><p id="plugbot-btn-notify" style="color:#ED1C24">alerts</p></li>' +
-        '<li id="plugbot-btn"><p id="plugbot-btn-kill" style="color:#ED1C24">remove</p></li>' +
-        '</ul>' +
-        '</div>'
-    );
-}
-
-function initUIListeners()
-{   
-    $("#plugbot-btn-userlist").on("click", function() {
-        meshkaEnhanced.data.userlist = !meshkaEnhanced.data.userlist;
-        $(this).css("color", meshkaEnhanced.data.userlist ? "#3FFF00" : "#ED1C24");
-        $("#plugbot-userlist").css("visibility", meshkaEnhanced.data.userlist ? ("visible") : ("hidden"));
-        if (!meshkaEnhanced.data.userlist)
-            $("#plugbot-userlist").empty();
-        else
-            populateUserlist();
-    });
-    $("#plugbot-btn-woot").on("click", function() {
-        meshkaEnhanced.data.woot = !meshkaEnhanced.data.woot;
-        $(this).css("color", meshkaEnhanced.data.woot ? "#3FFF00" : "#ED1C24");
-        if (meshkaEnhanced.data.woot) $("#button-vote-positive").click();
-    });
-    $("#plugbot-btn-queue").on("click", function() {
-        meshkaEnhanced.data.join = !meshkaEnhanced.data.join;
-        $(this).css("color", meshkaEnhanced.data.join ? "#3FFF00" : "#ED1C24");
-        $("#button-dj-waitlist-" + (meshkaEnhanced.data.join ? "join" : "leave")).click();
-    });
-    $("#plugbot-btn-notify").on("click", function() {
-        meshkaEnhanced.data.notify = !meshkaEnhanced.data.notify;
-        $(this).css("color", meshkaEnhanced.data.notify ? "#3FFF00" : "#ED1C24");
-    });
-}
-
-
-function djAdvanced(obj) {
-    displayUI();
-    setTimeout(function() {
-        if (autowoot) {
-            var dj = API.getDJs()[0];
-            if (dj === null) return;
-            if (dj == API.getSelf()) return;
-            $('#button-vote-positive').click();
-        }
-        if ($("#button-dj-waitlist-join").css("display") === "block" && autoqueue)
-            $("#button-dj-waitlist-join").click();
-    },3000);
-    if (userList)
-        populateUserlist();
-}
-
-function populateUserlist() 
-{
-
-    $('#plugbot-userlist').html(' ');
-    $('#plugbot-userlist').append('<h1 style="text-indent:12px;color:#42A5DC;font-size:14px;font-variant:small-caps;">Users: ' + API.getUsers().length + '</h1>');
-    $('#plugbot-userlist').append('<p style="padding-left:12px;text-indent:0px !important;font-style:italic;color:#42A5DC;font-size:11px;">Click a username to<br />@mention them</p><br />');
-    if ($('#button-dj-waitlist-view').attr('title') !== '') {
-        if ($('#button-dj-waitlist-leave').css('display') === 'block' && ($.inArray(API.getDJs(), API.getSelf()) == -1)) {
-            var spot = $('#button-dj-waitlist-view').attr('title').split('(')[1];
-                spot = spot.substring(0, spot.indexOf(')'));
-            $('#plugbot-userlist').append('<h1 id="plugbot-queuespot"><span style="font-variant:small-caps">Waitlist:</span> ' + spot + '</h3><br />');
-        }
-    }
-    var users = new Array();
-    for (user in API.getUsers())
-    {
-        users.push(API.getUsers()[user]);
-    }
-    for (user in users) 
-    {
-        var user = users[user];
-        appendUser(user);
-    }
-}
-
-function appendUser(user) 
-{
-    var username = user.username;
-    var permission = user.permission;
-    if (user.admin) {
-        permission = 99;
-    }
-    var imagePrefix;
-    switch (permission) {
-        case 0:     // Normal user
-        case 1:     // Featured DJ
-            imagePrefix = 'normal';
-            break;
-        case 2:     // Bouncer
-            imagePrefix = 'bouncer';
-            break;
-        case 3:     // Manager
-            imagePrefix = 'manager';
-            break;
-        case 4:
-        case 5:     // Co-host
-            imagePrefix = 'host';
-            break;
-        case 99:    // Admin
-            imagePrefix = 'admin';
-            break;
-    }
-    if (API.getDJs()[0].username == username) {
-        if (imagePrefix === 'normal') {
-            drawUserlistItem('void', '#42A5DC', username);
-        } else {
-            drawUserlistItem(imagePrefix + '_current.png', '#42A5DC', username);
-        }
-    } else if (imagePrefix === 'normal') {
-        drawUserlistItem('void', colorByVote(user.vote), username);
-    } else {
-        drawUserlistItem(imagePrefix + imagePrefixByVote(user.vote), colorByVote(user.vote), username);
-    }
-}
-function colorByVote(vote) {
-    if (!vote)  {
-        return '#fff'; // blame Boycey
-    }
-    switch (vote) {
-        case -1:    return '#c8303d';
-        case 0:     return '#fff';
-        case 1:     return '#c2e320';
-    }
-}
-function imagePrefixByVote(vote) {
-    if (!vote) {
-        return '_undecided.png'; // blame boycey again
-    }
-    switch (vote) {
-        case -1:    return '_meh.png';
-        case 0:     return '_undecided.png';
-        case 1:     return '_woot.png';
-    }
-}
-function drawUserlistItem(imagePath, color, username) {
-    if (imagePath !== 'void') {
-        var realPath = 'http://www.theedmbasement.com/basebot/userlist/' + imagePath;
-        $('#plugbot-userlist').append('<img src="' + realPath + '" align="left" style="margin-left:6px" />');
-    }
-    $('#plugbot-userlist').append(
-        '<p style="cursor:pointer;' + (imagePath === 'void' ? '' : 'text-indent:6px !important;')
-        + 'color:' + color + ';'
-        + ((API.getDJs()[0].username == username) ? 'font-size:15px;font-weight:bold;' : '')
-        + '" onclick="$(\'#chat-input-field\').val($(\'#chat-input-field\').val() + \'@' + username + ' \').focus();">' + username + '</p>'
-    );
-}
-
-/*End of PlugBot Core - Colgate's Expansion past here*/
-
-/*AppendToChat*/
-function appendToChat(message, from, color, changeToColor){
-    style = "";
-    if (color) style = 'style="color:' + color + ';"';
-    if (from)
-        div = $('<div class="chat-message"><span class="chat-from" ' + style + '>' + from + '</span><span class="chat-text" ' + style + '>: ' + message + '</span></div>')[0];
-    else
-        div = $('<div class="chat-message"><span class="chat-text" ' + style + ' >' + message + '</span></div>')[0];
-    scroll = false;
-    if ($("#chat-messages")[0].scrollHeight - $("#chat-messages").scrollTop() == $("#chat-messages").outerHeight())
-        scroll = true;
-    var curChatDiv = Popout ? Popout.Chat.chatMessages : Chat.chatMessages;
-    var s = curChatDiv.scrollTop()>curChatDiv[0].scrollHeight-curChatDiv.height()-20;
-    curChatDiv.append(div);
-    if (s)
-        curChatDiv.scrollTop(curChatDiv[0].scrollHeight);
-    
-    if (changeToColor) {
-        $(div).click(function(e) {
-            this.childNodes[0].style.color = changeToColor;
-        });
-    }
-}
-/*init*/
-
-$('#plugbot-userlist').remove();
-$('#plugbot-css').remove();
-$('#plugbot-js').remove();
-
-$('body').prepend('<style type="text/css" id="plugbot-css">'
-    + '#plugbot-ui { position: absolute; left:15px; top: 250px; z-index:8;}'
-    + '#plugbot-ui h2 { background-color: #0b0b0b; height: 112px; width: 156px; margin: 0; color: #fff; font-size: 13px; font-variant: small-caps; padding: 8px 0 0 12px; border-top: 1px dotted #292929; }'
-    + '#plugbot-ui ul {list-style-type:none; margin:0; padding:0;}'
-    + '#plugbot-ui li {float:left;}'
-    + '#plugbot-ui p {background-color: #0b0b0b; display:block; width:75px; padding:8px; text-align:center; color: #fff; font-size: 13px; font-variant: small-caps;}'
-    + '#plugbot-ui p:hover {background-color: #3C3C3C}'
-    
-    + '#plugbot-userlist { border: 6px solid rgba(10, 10, 10, 0.8); border-left: 0 !important; background-color: #000000; padding: 8px 0px 20px 0px; width: 12%; }'
-    + '#plugbot-userlist p { margin: 0; padding-top: 4px; text-indent: 24px; font-size: 10px; }'
-    + '#plugbot-userlist p:first-child { padding-top: 0px !important; }'
-    
-    + '#plugbot-queuespot { color: #42A5DC; text-align: left; font-size: 15px; margin-left: 8px }'
-    + '</style>');
-
-$("#button-vote-positive").click();
-
-initAPIListeners();
-$('body').append('<div id="plugbot-userlist"></div>');
-populateUserlist();
-displayUI();
-initUIListeners();
