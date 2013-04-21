@@ -94,12 +94,14 @@ var meshkaEnhancedModel = Class.extend({
         }
         Models.chat.chatCommand = ChatModel.chatCommand
         log('<span style="color:#FF0000"><i>Running IFZ Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
-        if (plugCubed == undefined) $.getScript("https://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
+        if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
     },
     close: function(){
         $('#meshka-css').remove();
         $('#userinterface').remove();
         $('#room-wheel').show()
+        if(plugCubed != undefined) plugCubed.close();
+        plugCubed = undefined
         ChatModel.chatCommand = function (a) {
             var b;
             if ("/help" == a) return a = {
