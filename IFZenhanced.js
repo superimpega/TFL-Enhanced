@@ -98,7 +98,6 @@ var meshkaEnhancedModel = Class.extend({
     },
     close: function(){
         $('#meshka-css').remove();
-        $('#userinterface').remove();
         $('#room-wheel').show()
         if(plugCubed != undefined) plugCubed.close();
         plugCubed = undefined
