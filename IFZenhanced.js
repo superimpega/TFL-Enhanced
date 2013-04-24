@@ -14,12 +14,8 @@ var meshkaEnhancedModel = Class.extend({
         $('#room-wheel').hide()
         $('head').append('<style type="text/css" id="meshka-css">'
             + 'html{background: url("http://i.imgur.com/Rqy6I.jpg") no-repeat scroll center top #000000;'
-            + '#userinterface { position: absolute; left:15px; top: 250px; z-index:8;}'
-            + '#userinterface ul {list-style-type:none; margin:0; padding:0;}'
-            + '#userinterface li {float:left;}'
-            + '#userinterface p {background-color: #0b0b0b; display:block; width:75px; padding:8px; text-align:center; color: #fff; font-size: 13px; font-variant: small-caps;}'
-            + '#userinterface p:hover {background-color: #3C3C3C}'
         + '</style>');
+         setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
         var words = {
             // Syntax: 'Search word' : 'Replace word',
             "Points" : "Points",
