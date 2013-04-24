@@ -7,7 +7,7 @@ var plugCubed;
 var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
-        minor: 0,
+        minor: 1,
         patch: 0
     },
     init: function(){
