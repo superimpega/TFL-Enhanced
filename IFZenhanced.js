@@ -95,13 +95,14 @@ var meshkaEnhancedModel = Class.extend({
         }
         Models.chat.chatCommand = ChatModel.chatCommand
         log('<span style="color:#FF0000"><i>Running IFZ Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
-        log('Join our facebook group : http://goo.gl/dpfv9')
+        log('<span style="color:#FFFF00">Join our facebook group </span>: http://goo.gl/dpfv9')
         if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
 
     },
     close: function(){
         $('#meshka-css').remove();
         $('#room-wheel').show()
+        API.removeEventListener(API.CHAT,this.proxy.onChat)
         RoomUser.audience.roomElements = _roomElements;
         setTimeout(function(){RoomUser.redraw();},500);
         if(plugCubed != undefined) plugCubed.close();
