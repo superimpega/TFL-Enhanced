@@ -3,7 +3,8 @@ if (meshkaEnhanced !== undefined)
 String.prototype.equalsIgnoreCase = function(other) {
     return this.toLowerCase() === other.toLowerCase();
 };
-var plugCubed;
+var plugCubed,
+_roomElements = RoomUser.audience.roomElements
 var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
@@ -95,6 +96,8 @@ var meshkaEnhancedModel = Class.extend({
     close: function(){
         $('#meshka-css').remove();
         $('#room-wheel').show()
+        RoomUser.audience.roomElements = _roomElements;
+        setTimeout(function(){RoomUser.redraw();},500);
         if(plugCubed != undefined) plugCubed.close();
         plugCubed = undefined
         ChatModel.chatCommand = function (a) {
