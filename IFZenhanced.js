@@ -9,7 +9,7 @@ var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
         minor: 1,
-        patch: 0
+        patch: 2
     },
     init: function(){
         $('#room-wheel').hide()
@@ -95,7 +95,7 @@ var meshkaEnhancedModel = Class.extend({
         }
         Models.chat.chatCommand = ChatModel.chatCommand
         log('<span style="color:#FF0000"><i>Running IFZ Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
-        log('https://www.facebook.com/groups/151697198330256/')
+        log('Join our facebook group : http://goo.gl/dpfv9')
         if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
 
     },
