@@ -50,6 +50,10 @@ var meshkaEnhancedModel = Class.extend({
                 }
             }
         }
+        this.proxy = {
+            onChat: $.proxy(this.onChat, this)
+        };
+        API.addEventListener(API.CHAT,this.proxy.onChat)
         ChatModel.chatCommand = function (a) {
             var b;
             if ("/help" == a) return a = {
@@ -91,7 +95,9 @@ var meshkaEnhancedModel = Class.extend({
         }
         Models.chat.chatCommand = ChatModel.chatCommand
         log('<span style="color:#FF0000"><i>Running IFZ Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
+        log('https://www.facebook.com/groups/151697198330256/')
         if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
+
     },
     close: function(){
         $('#meshka-css').remove();
@@ -136,6 +142,19 @@ var meshkaEnhancedModel = Class.extend({
             }, a.message = b, this.receive(a), !0) : !1
         }
         Models.chat.chatCommand = ChatModel.chatCommand
+    },
+    onChat: function(data) {
+        if (data.type == 'message' && (Models.room.data.staff[data.fromID] > 2 || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!strobe on') === 0) {
+            log(data.from + ' hit the strobe light!');
+            RoomUser.audience.strobeMode(true);
+        } else if (data.type == 'message' && (Models.room.data.staff[data.fromID] > 2 || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!strobe off') === 0) {
+            RoomUser.audience.strobeMode(false);
+        } else if (data.type == 'message' && (Models.room.data.staff[data.fromID] > 2 || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave on') === 0) {
+            log(data.from + ' turned the lights down!');
+            RoomUser.audience.lightsOut(true)
+        } else if (data.type == 'message' && (Models.room.data.staff[data.fromID] > 2 || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave off') === 0) {
+            RoomUser.audience.lightsOut(false)
+        }
     }
 });
 var meshkaEnhanced = new meshkaEnhancedModel;
