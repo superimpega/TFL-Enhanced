@@ -14,7 +14,7 @@ var meshkaEnhancedModel = Class.extend({
     init: function(){
         $('#room-wheel').hide()
         $('head').append('<style type="text/css" id="meshka-css">'
-            + 'html{background: url("http://i.imgur.com/Rqy6I.jpg") no-repeat scroll center top #000000;'
+            + 'html{background: url("http://i.imgur.com/Y7Xh4Of.jpg") no-repeat scroll center top #000000;'
         + '</style>');
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
         var words = {
