@@ -26,7 +26,7 @@ var meshkaEnhancedModel = Class.extend({
             "Volume" : "Crank it up!",
             "Current DJ" : "Current DJ",
             "Crowd Response" : "Crowd's Reaction",
-            "Fans":"Fans"
+            "Fans":"Minions"
         };
         String.prototype.prepareRegex = function() {
             return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
