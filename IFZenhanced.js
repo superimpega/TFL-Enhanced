@@ -17,6 +17,7 @@ var meshkaEnhancedModel = Class.extend({
             + 'html{background: url("http://i.imgur.com/Y7Xh4Of.jpg") no-repeat scroll center top #000000;}'
             + '#button-lobby { background-image: url(http://i.imgur.com/DNiULH5.png);}'
             + 'body {color:#ff0000;}'
+            + '#chat {color:#ffffff;}'
         + '</style>');
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
         var words = {
