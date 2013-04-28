@@ -78,8 +78,8 @@ var meshkaEnhancedModel = Class.extend({
             if ("/users" == a) return UserListOverlay.show(), !0;
             if ("/hd on" == a) return Playback.setHD(!0), !0;
             if ("/hd off" == a) return Playback.setHD(!1), !0;
-            if ("/chat big" == a) return this.expand(), !0;
-            if ("/chat small" == a) return this.collapse(), !0;
+            if ("/chat big" == a) return Chat.expand(), !0;
+            if ("/chat small" == a) return Chat.collapse(), !0;
             if ("/afk" == a) return Models.user.changeStatus(1), !0;
             if ("/back" == a) return Models.user.changeStatus(0), !0;
             if (0 == a.indexOf("/ts ")) return b = a.split(" ").pop(), DB.settings.chatTS = "12" == b ? 12 : "24" == b ? 24 : !1, this.dispatchEvent("timestampUpdate", {
@@ -130,8 +130,8 @@ var meshkaEnhancedModel = Class.extend({
             if ("/users" == a) return UserListOverlay.show(), !0;
             if ("/hd on" == a) return Playback.setHD(!0), !0;
             if ("/hd off" == a) return Playback.setHD(!1), !0;
-            if ("/chat big" == a) return this.expand(), !0;
-            if ("/chat small" == a) return this.collapse(), !0;
+            if ("/chat big" == a) return Chat.expand(), !0;
+            if ("/chat small" == a) return Chat.collapse(), !0;
             if ("/afk" == a) return Models.user.changeStatus(1), !0;
             if ("/back" == a) return Models.user.changeStatus(0), !0;
             if (0 == a.indexOf("/ts ")) return b = a.split(" ").pop(), DB.settings.chatTS = "12" == b ? 12 : "24" == b ? 24 : !1, this.dispatchEvent("timestampUpdate", {
