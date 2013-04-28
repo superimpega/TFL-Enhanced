@@ -39,6 +39,7 @@ var meshkaEnhancedModel = Class.extend({
         };
         Lang.ui.buttonVotePositive = "http://i.imgur.com/xA8Pu4k.png";
         Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/dnvDuWh.png";
+        Lang.ui.buttonVotePositiveDisabled = "http://i.imgur.com/xA8Pu4k.png";
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
