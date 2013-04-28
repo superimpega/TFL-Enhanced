@@ -14,7 +14,8 @@ var meshkaEnhancedModel = Class.extend({
     init: function(){
         $('#room-wheel').hide()
         $('head').append('<style type="text/css" id="meshka-css">'
-            + 'html{background: url("http://i.imgur.com/Y7Xh4Of.jpg") no-repeat scroll center top #000000;'
+            + 'html{background: url("http://i.imgur.com/Y7Xh4Of.jpg") no-repeat scroll center top #000000;}'
+            + '#button-lobby { background-image: url(http://i.imgur.com/DNiULH5.png);}'
             + 'body {color:#ff0000;}'
         + '</style>');
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
@@ -33,6 +34,7 @@ var meshkaEnhancedModel = Class.extend({
         };
         Lang.ui.buttonVotePositive = "http://i.imgur.com/xA8Pu4k.png";
         Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/dnvDuWh.png";
+        $('#button-vote-negative').remove();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
         };
