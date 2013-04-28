@@ -17,8 +17,12 @@ var meshkaEnhancedModel = Class.extend({
             + 'html{background: url("http://i.imgur.com/Y7Xh4Of.jpg") no-repeat scroll center top #000000;}'
             + '#button-lobby { background-image: url(http://i.imgur.com/DNiULH5.png);}'
             + 'body {color:#66FFFF;}'
+            + '#current-dj-value {color:#66FFFF;}'
+            + '#now-playing-value{color:#66FFFF;}'
+            + '#room-score-value{color:#66FFFF;}'
             + '#chat {color:#ffffff;}'
         + '</style>');
+        $('#time-remaining-value').attr('style','color: rgb(102, 255, 255);')
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
         var words = {
             // Syntax: 'Search word' : 'Replace word',
@@ -35,7 +39,7 @@ var meshkaEnhancedModel = Class.extend({
         };
         Lang.ui.buttonVotePositive = "http://i.imgur.com/xA8Pu4k.png";
         Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/dnvDuWh.png";
-        $('#button-vote-negative').remove();
+        $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
         };
@@ -107,7 +111,10 @@ var meshkaEnhancedModel = Class.extend({
     },
     close: function(){
         $('#meshka-css').remove();
-        $('#room-wheel').show()
+        $('#room-wheel').show();
+        $('#button-vote-negative').show();
+        Lang.ui.buttonVotePositive = "http://www.plug.dj/images/en/ButtonVotePositive.png";
+        Lang.ui.buttonVotePositiveSelected = "http://www.plug.dj/images/en/ButtonVotePositiveSelected.png";
         API.removeEventListener(API.CHAT,this.proxy.onChat)
         RoomUser.audience.roomElements = _roomElements;
         setTimeout(function(){RoomUser.redraw();},500);
