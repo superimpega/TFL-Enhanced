@@ -115,7 +115,7 @@ var meshkaEnhancedModel = Class.extend({
         $('#room-wheel').show();
         $('#button-vote-negative').show();
         Lang.ui.buttonVotePositive = "http://www.plug.dj/images/en/ButtonVotePositive.png";
-        Lang.ui.buttonVotePositiveSelected = "http://www.plug.dj/images/en/ButtonVotePositiveSelected.png";
+        Lang.ui.buttonVotePositiveSelected = "http://plug.dj/_/static/images/en/ButtonVotePositiveSelected.c9947cb3.png";
         API.removeEventListener(API.CHAT,this.proxy.onChat)
         RoomUser.audience.roomElements = _roomElements;
         setTimeout(function(){RoomUser.redraw();},500);
