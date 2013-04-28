@@ -31,6 +31,8 @@ var meshkaEnhancedModel = Class.extend({
         String.prototype.prepareRegex = function() {
             return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
         };
+        Lang.ui.buttonVotePositive = "http://i.imgur.com/xA8Pu4k.png";
+        Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/dnvDuWh.png";
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
         };
