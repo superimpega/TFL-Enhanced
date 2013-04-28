@@ -9,7 +9,7 @@ var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
         minor: 1,
-        patch: 2
+        patch: 5
     },
     init: function(){
         $('#room-wheel').hide()
