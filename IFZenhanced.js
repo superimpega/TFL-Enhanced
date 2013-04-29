@@ -25,7 +25,7 @@ var meshkaEnhancedModel = Class.extend({
             + '.chat-moderation {color:#00FF22;}'
             + '.chat-text a:link {color:#FCFF00;}'
             + '.chat-text a:visited {color:#22FF00;}'
-            + '.chat-text a:hover {color:#37FF00;}'
+            + '.chat-text a:hover {color:#EF00FF;}'
             + '.chat-text a:active {color:#66FFFF;}'
         + '</style>');
         $('#time-remaining-value').attr('style','color: rgb(102, 255, 255);')
