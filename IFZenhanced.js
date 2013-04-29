@@ -20,7 +20,7 @@ var meshkaEnhancedModel = Class.extend({
             + '#current-dj-value {color:#66FFFF;}'
             + '#now-playing-value{color:#66FFFF;}'
             + '#room-score-value{color:#66FFFF;}'
-            + '#chat {color:#ffffff;}'
+            + '#chat {color:#00D1FF;}'
         + '</style>');
         $('#time-remaining-value').attr('style','color: rgb(102, 255, 255);')
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
