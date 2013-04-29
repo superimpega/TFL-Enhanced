@@ -21,10 +21,12 @@ var meshkaEnhancedModel = Class.extend({
             + '#now-playing-value{color:#66FFFF;}'
             + '#room-score-value{color:#66FFFF;}'
             + '#chat {color:#00D1FF;}'
-            + 'a:link {color:#FF00F7;}'
-            + 'a:visited {color:#DE00FF;}'
-            + 'a:hover {color:#37FF00;}'
-            + 'a:active {color:#66FFFF;}'
+            + '.chat-cohost {color:#FF00FC;}'
+            + '.chat-moderation {color:#00FF22;}'
+            + '.chat-text a:link {color:#FF00F7;}'
+            + '.chat-text a:visited {color:#DE00FF;}'
+            + '.chat-text a:hover {color:#37FF00;}'
+            + '.chat-text a:active {color:#66FFFF;}'
         + '</style>');
         $('#time-remaining-value').attr('style','color: rgb(102, 255, 255);')
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
