@@ -15,7 +15,7 @@ var meshkaEnhancedModel = Class.extend({
         $('#room-wheel').hide()
         $('head').append('<style type="text/css" id="meshka-css">'
             + 'html{background: url("http://i.imgur.com/kA7n2v3.jpg") no-repeat scroll center top #000000;}'
-            + '#button-lobby { background-image: url(http://i.imgur.com/DNiULH5.png);}'
+            + '#button-lobby { background-image: url(http://i.imgur.com/bhv3Ay1.jpg);}'
             + 'body {color:#66FFFF;}'
             + '#current-dj-value {color:#66FFFF;}'
             + '#now-playing-value{color:#66FFFF;}'
