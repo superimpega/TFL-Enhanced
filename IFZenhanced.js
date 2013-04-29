@@ -23,8 +23,8 @@ var meshkaEnhancedModel = Class.extend({
             + '#chat {color:#00D1FF;}'
             + '.chat-cohost {color:#FF00FC;}'
             + '.chat-moderation {color:#00FF22;}'
-            + '.chat-text a:link {color:#FF00F7;}'
-            + '.chat-text a:visited {color:#DE00FF;}'
+            + '.chat-text a:link {color:#FCFF00;}'
+            + '.chat-text a:visited {color:#22FF00;}'
             + '.chat-text a:hover {color:#37FF00;}'
             + '.chat-text a:active {color:#66FFFF;}'
         + '</style>');
