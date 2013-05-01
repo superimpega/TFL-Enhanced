@@ -36,7 +36,7 @@ var meshkaEnhancedModel = Class.extend({
             // Syntax: 'Search word' : 'Replace word',
             "Points" : "Points",
             "Now Playing" : "Now Playing",
-            "Time Remaining" : "Time Remaining",
+            "Time Remaining" : "Time Wasted",
             "Volume" : "Crank it up!",
             "Current DJ" : "Current DJ",
             "Crowd Response" : "Crowd's Reaction",
