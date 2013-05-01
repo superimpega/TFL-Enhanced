@@ -9,12 +9,14 @@ var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
         minor: 1,
-        patch: 5
+        patch: 6
     },
     init: function(){
         $('#room-wheel').css('background','url("https://github.com/Colgate/IFZ-Enhanced/raw/master/extras/IFZ.gif")');
         $('#room-wheel').css('background-repeat','no-repeat');
         $('#room-wheel').css('background-position','500px 275px')
+        $('#meta-frame .frame-background').remove('.frame-background');
+		$('#meta-frame').css('background-color','transparent');
         $('head').append('<style type="text/css" id="meshka-css">'
             + 'html{background: url("http://i.imgur.com/vIjULyr.jpg") no-repeat scroll center top #000000;}'
             + '#button-lobby { background-image: url("http://i.imgur.com/DNiULH5.png");}'
