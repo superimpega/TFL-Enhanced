@@ -33,6 +33,7 @@ var meshkaEnhancedModel = Class.extend({
             + '.chat-text a:visited {color:#22FF00;}'
             + '.chat-text a:hover {color:#EF00FF;}'
             + '.chat-text a:active {color:#66FFFF;}'
+            + '#volume-bar-value {background-image: url("http://i.imgur.com/Qzqn3OG.png");}' 
         + '</style>');
         $('#time-remaining-value').attr('style','color: rgb(102, 255, 255);')
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
