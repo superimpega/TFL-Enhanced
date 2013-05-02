@@ -19,10 +19,15 @@ var meshkaEnhancedModel = Class.extend({
 	$('#meta-frame').css('background-color','transparent');
 	$('#playback .frame-background').remove('.frame-background');
 	$('#playback').css('background-color','transparent');
-        $('head').append('<style type="text/css" id="meshka-css">'
+        $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
+            + '<style type="text/css" id="meshka-css">'
             + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
             + '#button-lobby { background-image: url("http://i.imgur.com/DNiULH5.png");}'
             + 'body {color:#66FFFF;}'
+            + '#current-dj-value {color:#66FFFF; font-family: "Faster One", cursive;}'
+            + '#current-room-value {font-family: "Faster One", cursive;}'
+            + '#user-points-value {font-family: "Faster One", cursive;}'
+            + '.chat-title {font-family: "Faster One", cursive;}'
             + '#current-dj-value {color:#66FFFF;}'
             + '#now-playing-value{color:#66FFFF;}'
             + '#room-score-value{color:#66FFFF;}'
