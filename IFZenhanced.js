@@ -26,7 +26,6 @@ var meshkaEnhancedModel = Class.extend({
             + 'body {color:#66FFFF;}'
             + '#current-dj-value {color:#66FFFF; font-family: "Faster One", cursive;}'
             + '#current-room-value {font-family: "Faster One", cursive;}'
-            + '#user-points-value {font-family: "Faster One", cursive;}'
             + '.chat-title {font-family: "Faster One", cursive;}'
             + '#current-dj-value {color:#66FFFF;}'
             + '#now-playing-value{color:#66FFFF;}'
