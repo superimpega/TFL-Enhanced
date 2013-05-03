@@ -127,8 +127,8 @@ var meshkaEnhancedModel = Class.extend({
 
     },
     close: function(){
-        $('#meshka-css').remove();
-        $('#room-wheel').show();
+        $('.meshka-css').remove();
+        $('#room-wheel').css('background','url("http://plug.dj/_/static/images/room_wheel2.0ea1fb92.png")');
         $('#button-vote-negative').show();
         Lang.ui.buttonVotePositive = "http://www.plug.dj/images/en/ButtonVotePositive.png";
         Lang.ui.buttonVotePositiveSelected = "http://plug.dj/_/static/images/en/ButtonVotePositiveSelected.c9947cb3.png";
