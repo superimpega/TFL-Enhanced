@@ -56,6 +56,12 @@ var meshkaEnhancedModel = Class.extend({
         Lang.ui.buttonVotePositive = "http://i.imgur.com/xA8Pu4k.png";
         Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/dnvDuWh.png";
         Lang.ui.buttonVotePositiveDisabled = "http://i.imgur.com/xA8Pu4k.png";
+        Lang.rollover.fans = "Minions"
+        Lang.messages.fanEnter = "Your minion %NAME% just joined the room!"
+        Lang.messages.fanOf = "You are now a minion of %NAME%."
+        Lang.messages.unFanOf = "You are no longer a minion of %NAME%."
+        Lang.messages.follow = "%NAME% is now your minion!"
+        Lang.rollover.becomeFan = "Become a minion"
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
@@ -133,6 +139,12 @@ var meshkaEnhancedModel = Class.extend({
         Lang.ui.buttonVotePositive = "http://www.plug.dj/images/en/ButtonVotePositive.png";
         Lang.ui.buttonVotePositiveSelected = "http://plug.dj/_/static/images/en/ButtonVotePositiveSelected.c9947cb3.png";
         Lang.ui.buttonVotePositiveDisabled = "http://plug.dj/_/static/images/en/ButtonVotePositiveDisabled.ce7c40b3.png";
+        Lang.rollover.fans = "fans"
+        Lang.messages.fanEnter = "Your fan %NAME% just joined the room!"
+        Lang.messages.fanOf = "You are now a fan of %NAME%."
+        Lang.messages.unFanOf = "You are no longer a fan of %NAME%." 
+        Lang.messages.follow = "%NAME% is now your fan!"
+        Lang.rollover.becomeFan = "Become a fan"
         API.removeEventListener(API.CHAT,this.proxy.onChat)
         RoomUser.audience.roomElements = _roomElements;
         setTimeout(function(){RoomUser.redraw();},500);
