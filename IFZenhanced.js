@@ -9,16 +9,21 @@ var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
         minor: 1,
-        patch: 6
+        patch: 7
     },
     init: function(){
         $('#room-wheel').css('background','url("https://github.com/Colgate/IFZ-Enhanced/raw/master/extras/IFZ.gif")');
         $('#room-wheel').css('background-repeat','no-repeat');
         $('#room-wheel').css('background-position','500px 275px');
         $('#meta-frame .frame-background').remove('.frame-background');
+        $('#button-dj-waitlist-join').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
+        $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
+        $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
+        $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
 	$('#meta-frame').css('background-color','transparent');
 	$('#playback .frame-background').remove('.frame-background');
 	$('#playback').css('background-color','transparent');
+    $('#button-')
         $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
             + '<style type="text/css" id="meshka-css">'
             + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
@@ -26,6 +31,10 @@ var meshkaEnhancedModel = Class.extend({
             + 'body {color:#66FFFF;}'
             + '#current-dj-value {color:#66FFFF;}'
             + '.chat-title {font-family: "Faster One", cursive;}'
+            + '#button-dj-play.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
+            + '#button-dj-quit.button-dj {    background-image: url("http://i.imgur.com/krkSXRv.png");}'
+            + '#button-dj-waitlist-join.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
+            + '#button-dj-waitlist-leave.button-dj {background-image: url("http://i.imgur.com/krkSXRv.png");}'
             + '#current-dj-value {color:#66FFFF;}'
             + '#now-playing-value{color:#66FFFF;}'
             + '#room-score-value{color:#66FFFF;}'
@@ -65,6 +74,10 @@ var meshkaEnhancedModel = Class.extend({
         Lang.messages.unFanOf = "You are no longer a minion of %NAME%."
         Lang.messages.follow = "%NAME% is now your minion!"
         Lang.rollover.becomeFan = "Become a minion"
+        Lang.ui.buttonDJPlay = "http://i.imgur.com/8Minrha.png";
+        Lang.ui.buttonDJLeave = "http://i.imgur.com/krkSXRv.png";
+        Lang.ui.buttonDJWaitlistJoin = "http://i.imgur.com/8Minrha.png";
+        Lang.ui.buttonDJWaitlistLeave = "http://i.imgur.com/krkSXRv.png";
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
