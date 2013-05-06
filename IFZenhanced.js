@@ -9,7 +9,7 @@ var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
         minor: 1,
-        patch: 7
+        patch: 8
     },
     init: function(){
         $('#room-wheel').css('background','url("https://github.com/Colgate/IFZ-Enhanced/raw/master/extras/IFZ.gif")');
