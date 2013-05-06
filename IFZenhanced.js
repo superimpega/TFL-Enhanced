@@ -20,7 +20,7 @@ var meshkaEnhancedModel = Class.extend({
         $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
         $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
         $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
-        $('#dj-console').attr('style','background-image:url(http://i.imgur.com/Fkyi60D.png); display:block;');
+        $('#dj-console').attr('style','background-image:url(http://i.imgur.com/bLYq7gA.png); display:block;');
 	$('#meta-frame').css('background-color','transparent');
 	$('#playback .frame-background').remove('.frame-background');
 	$('#playback').css('background-color','transparent');
