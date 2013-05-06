@@ -15,7 +15,7 @@ var meshkaEnhancedModel = Class.extend({
         $('#room-wheel').css('background','url("https://github.com/Colgate/IFZ-Enhanced/raw/master/extras/IFZ.gif")');
         $('#room-wheel').css('background-repeat','no-repeat');
         $('#room-wheel').css('background-position','500px 275px');
-        $('#meta-frame .frame-background').remove('.frame-background');
+        $('#meta-frame .frame-background').hide('.frame-background');
         $('#button-dj-waitlist-join').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
         $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
         $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
@@ -23,7 +23,7 @@ var meshkaEnhancedModel = Class.extend({
         $('#dj-console').attr('style','background-image:url(http://i.imgur.com/bLYq7gA.png); display:block;');
         $('#button-add-this').attr('style','background-image:url(http://i.imgur.com/LxrhgJi.png);');
 	$('#meta-frame').css('background-color','transparent');
-	$('#playback .frame-background').remove('.frame-background');
+	$('#playback .frame-background').hide('.frame-background');
 	$('#playback').css('background-color','transparent');
         $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
             + '<style type="text/css" id="meshka-css">'
@@ -161,6 +161,10 @@ var meshkaEnhancedModel = Class.extend({
         $('#button-dj-leave').attr('style','background-image:url(http://plug.dj/_/static/images/en/ButtonDJQuit.1a691d0c.png); display: block;');
         $('#dj-console').attr('style','background-image:url(http://plug.dj/_/static/images/DJConsole2.8acc86f0.png); display:block;');
         $('#button-add-this').attr('style','background-image:url(http://plug.dj/_/static/images/en/ButtonAddThis.175d7d45.png);');
+        $('#meta-frame').show('.frame-background');
+        $('#playback').show('.frame-background');
+        $('#meta-frame').css('background-color','#0A0A0A');
+        $('#playback').css('background-color','#0A0A0A');
         Lang.ui.buttonVotePositive = "http://plug.dj/_/static/images/en/ButtonVotePositive.85cfc5a9.png";
         Lang.ui.buttonVotePositiveSelected = "http://plug.dj/_/static/images/en/ButtonVotePositiveSelected.c9947cb3.png";
         Lang.ui.buttonVotePositiveDisabled = "http://plug.dj/_/static/images/en/ButtonVotePositiveDisabled.ce7c40b3.png";
