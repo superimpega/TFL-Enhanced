@@ -89,6 +89,9 @@ var meshkaEnhancedModel = Class.extend({
         Lang.ui.buttonDJLeave = "http://i.imgur.com/krkSXRv.png";
         Lang.ui.buttonDJWaitlistJoin = "http://i.imgur.com/8Minrha.png";
         Lang.ui.buttonDJWaitlistLeave = "http://i.imgur.com/krkSXRv.png";
+        Lang.ui.buttonDJQuitShort = "http://i.imgur.com/krkSXRv.png";
+        Lang.ui.buttonDJQuit = "http://i.imgur.com/krkSXRv.png";
+        Lang.ui.buttonDJPlayShort = "http://i.imgur.com/8Minrha.png";
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
@@ -183,6 +186,9 @@ var meshkaEnhancedModel = Class.extend({
         Lang.ui.buttonDJLeave = "http://plug.dj/_/static/images/en/ButtonDJQuit.1a691d0c.png";
         Lang.ui.buttonDJWaitlistJoin = "http://plug.dj/_/static/images/en/ButtonDJWaitListJoin.fbffc481.png";
         Lang.ui.buttonDJWaitlistLeave = "http://plug.dj/_/static/images/en/ButtonDJWaitListLeave.5d5847b1.png";
+        Lang.ui.buttonDJQuitShort = "http://plug.dj/_/static/images/en/ButtonDJQuitShort.8e572d1a.png";
+        Lang.ui.buttonDJQuit = "http://plug.dj/_/static/images/en/ButtonDJQuit.1a691d0c.png";
+        Lang.ui.buttonDJPlayShort = "http://plug.dj/_/static/images/en/ButtonDJPlayShort.b88f8f86.png";
         Lang.rollover.fans = "fans"
         Lang.messages.fanEnter = "Your fan %NAME% just joined the room!"
         Lang.messages.fanOf = "You are now a fan of %NAME%."
