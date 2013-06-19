@@ -12,53 +12,7 @@ var meshkaEnhancedModel = Class.extend({
         patch: 8
     },
     init: function(){
-        $('#room-wheel').css('background','url("https://github.com/Colgate/TFL-Enhanced/raw/master/extras/TFL.gif")');
-        $('#room-wheel').css('background-repeat','no-repeat');
-        $('#room-wheel').css('background-position','500px 275px');
-        $('#meta-frame .frame-background').hide('.frame-background');
-        $('#button-dj-waitlist-join').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
-        $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
-        $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
-        $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
-        $('#dj-console').attr('style','background-image:url(http://i.imgur.com/bLYq7gA.png); display:block; position:absolute; top:15px; width:317px;');
-        $('#button-add-this').attr('style','background-image:url(http://i.imgur.com/LxrhgJi.png);');
-	$('#meta-frame').css('background-color','transparent');
-	$('#playback .frame-background').hide('.frame-background');
-	$('#playback').css('background-color','transparent');
-        $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
-            + '<style type="text/css" id="meshka-css">'
-            + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
-            + '#button-lobby { background-image: url("http://i.imgur.com/DNiULH5.png");}'
-            + 'body {color:#66FFFF;}'
-            + '#current-dj-value {color:#66FFFF;}'
-            + '.chat-title {font-family: "Faster One", cursive;}'
-            + '#button-dj-play.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
-            + '#button-dj-quit.button-dj {    background-image: url("http://i.imgur.com/krkSXRv.png");}'
-            + '#button-dj-waitlist-join.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
-            + '#button-dj-waitlist-leave.button-dj {background-image: url("http://i.imgur.com/krkSXRv.png");}'
-            + '#button-dj-waitlist-view {background-image: url("http://i.imgur.com/JRKjxo1.png");}'
-            + '#button-my-playlists {background-image: url("http://i.imgur.com/evZdc5M.png");}'
-            + '#button-share-facebook {background-image: url("http://i.imgur.com/EbP8DqH.png");}'
-            + '#button-share-twitter {background-image: url("http://i.imgur.com/tLo3Jrd.png");}'
-            + '#button-refresh {background-image: url("http://i.imgur.com/fSCX85l.png");}'
-            + '#button-hd-on {background-image: url("http://i.imgur.com/UNDkKE2.png");}'
-            + '#button-hd-off {background-image: url("http://i.imgur.com/slXKnox.png");}'
-            + '#current-dj-value {color:#66FFFF;}'
-            + '#now-playing-value{color:#66FFFF;}'
-            + '#room-score-value{color:#66FFFF;}'
-            + '#chat {color:#00D1FF;}'
-            + '.chat-cohost {color:#FF00FC;}'
-            + '.chat-emote {color:#FCFF00;}'
-            + '.chat-emote .chat-from {color:#FCFF00;}'
-            + '.chat-host {color:#4CFF00;}'
-            + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000 !important;}'
-            + '.chat-moderation {color:#00FF22;}'
-            + '.chat-text a:link {color:#FCFF00;}'
-            + '.chat-text a:visited {color:#22FF00;}'
-            + '.chat-text a:hover {color:#EF00FF;}'
-            + '.chat-text a:active {color:#66FFFF;}'
-            + '#volume-bar-value {background-image: url("http://i.imgur.com/Qzqn3OG.png");}' 
-        + '</style>');
+        setTimeout($.proxy(this.initCSS,this), 1500)
         $('#time-remaining-value').attr('style','color: rgb(102, 255, 255);')
          setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();},500);
         var words = {
@@ -241,6 +195,55 @@ var meshkaEnhancedModel = Class.extend({
         }
         Models.chat.chatCommand = ChatModel.chatCommand
     },
+    initCSS: function() {
+        $('#room-wheel').css('background','url("https://github.com/Colgate/TFL-Enhanced/raw/master/extras/TFL.gif")');
+        $('#room-wheel').css('background-repeat','no-repeat');
+        $('#room-wheel').css('background-position','500px 275px');
+        $('#meta-frame .frame-background').hide('.frame-background');
+        $('#button-dj-waitlist-join').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
+        $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
+        $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
+        $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
+        $('#dj-console').attr('style','background-image:url(http://i.imgur.com/bLYq7gA.png); display:block; position:absolute; top:15px; width:317px;');
+        $('#button-add-this').attr('style','background-image:url(http://i.imgur.com/LxrhgJi.png);');
+    $('#meta-frame').css('background-color','transparent');
+    $('#playback .frame-background').hide('.frame-background');
+    $('#playback').css('background-color','transparent');
+        $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
+            + '<style type="text/css" id="meshka-css">'
+            + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
+            + '#button-lobby { background-image: url("http://i.imgur.com/DNiULH5.png");}'
+            + 'body {color:#66FFFF;}'
+            + '#current-dj-value {color:#66FFFF;}'
+            + '.chat-title {font-family: "Faster One", cursive;}'
+            + '#button-dj-play.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
+            + '#button-dj-quit.button-dj {    background-image: url("http://i.imgur.com/krkSXRv.png");}'
+            + '#button-dj-waitlist-join.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
+            + '#button-dj-waitlist-leave.button-dj {background-image: url("http://i.imgur.com/krkSXRv.png");}'
+            + '#button-dj-waitlist-view {background-image: url("http://i.imgur.com/JRKjxo1.png");}'
+            + '#button-my-playlists {background-image: url("http://i.imgur.com/evZdc5M.png");}'
+            + '#button-share-facebook {background-image: url("http://i.imgur.com/EbP8DqH.png");}'
+            + '#button-share-twitter {background-image: url("http://i.imgur.com/tLo3Jrd.png");}'
+            + '#button-refresh {background-image: url("http://i.imgur.com/fSCX85l.png");}'
+            + '#button-hd-on {background-image: url("http://i.imgur.com/UNDkKE2.png");}'
+            + '#button-hd-off {background-image: url("http://i.imgur.com/slXKnox.png");}'
+            + '#current-dj-value {color:#66FFFF;}'
+            + '#now-playing-value{color:#66FFFF;}'
+            + '#room-score-value{color:#66FFFF;}'
+            + '#chat {color:#00D1FF;}'
+            + '.chat-cohost {color:#FF00FC;}'
+            + '.chat-emote {color:#FCFF00;}'
+            + '.chat-emote .chat-from {color:#FCFF00;}'
+            + '.chat-host {color:#4CFF00;}'
+            + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000 !important;}'
+            + '.chat-moderation {color:#00FF22;}'
+            + '.chat-text a:link {color:#FCFF00;}'
+            + '.chat-text a:visited {color:#22FF00;}'
+            + '.chat-text a:hover {color:#EF00FF;}'
+            + '.chat-text a:active {color:#66FFFF;}'
+            + '#volume-bar-value {background-image: url("http://i.imgur.com/Qzqn3OG.png");}' 
+        + '</style>');
+},
     onChat: function(data) {
         if (data.type == 'message' && (Models.room.data.staff[data.fromID] > 2 || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!strobe on') === 0) {
             log(data.from + ' hit the strobe light!');
