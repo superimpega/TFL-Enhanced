@@ -51,7 +51,7 @@ var meshkaEnhancedModel = Class.extend({
             + '.chat-emote {color:#FCFF00;}'
             + '.chat-emote .chat-from {color:#FCFF00;}'
             + '.chat-host {color:#4CFF00;}'
-            + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF0000;}'
+            + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000;!important;}'
             + '.chat-moderation {color:#00FF22;}'
             + '.chat-text a:link {color:#FCFF00;}'
             + '.chat-text a:visited {color:#22FF00;}'
