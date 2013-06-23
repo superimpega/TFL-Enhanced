@@ -239,7 +239,7 @@ var meshkaEnhancedModel = Class.extend({
             + '.chat-cohost {background-image: url("http://i.imgur.com/IXHlBTx.png");}'
             + '.chat-from-featureddj {background: url("http://i.imgur.com/0TFOAo0.png") no-repeat;}'
             + '.chat-from-featureddj {padding-left:17px;}'
-            + '.chat-manager {color:#00EBFF}'
+            + '.chat-manager {color:#0084FF}'
             + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000 !important;}'
             + '.chat-message .chat-from-cohost, .chat-mention .chat-from-cohost {color:#0D00FF !important;}'
             + '.chat-moderation {color:#00FF22;}'
