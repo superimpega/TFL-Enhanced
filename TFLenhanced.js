@@ -245,7 +245,7 @@ var meshkaEnhancedModel = Class.extend({
             + '.chat-message .chat-from-manager, .chat-mention .chat-from-manager {color:#92FFFF !important;}'
             + '.chat-message .chat-from, .chat-mention .chat-from{background: url("http://i.imgur.com/aIrI4Hh.png") no-repeat;}'
             + '.chat-message .chat-from, .chat-mention .chat-from {padding-left:17px;}'
-            + '.chat-manager {color:#0084FF}'
+            + '.chat-manager {color:#20F92E}'
             + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000 !important;}'
             + '.chat-message .chat-from-cohost, .chat-mention .chat-from-cohost {color:#0D00FF !important;}'
             + '.chat-moderation .chat-from {color:#00FF22;}'
