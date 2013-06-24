@@ -8,8 +8,8 @@ _roomElements = RoomUser.audience.roomElements
 var meshkaEnhancedModel = Class.extend({
     version: {
         major: 1,
-        minor: 1,
-        patch: 8
+        minor: 2,
+        patch: 0
     },
     init: function(){
         setTimeout($.proxy(this.initCSS,this), 1500)
