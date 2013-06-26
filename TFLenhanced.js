@@ -1,15 +1,15 @@
-if (meshkaEnhanced !== undefined)
-    meshkaEnhanced.close();
+if (TFLEnhanced !== undefined)
+    TFLEnhanced.close();
 String.prototype.equalsIgnoreCase = function(other) {
     return this.toLowerCase() === other.toLowerCase();
 };
 var plugCubed,
 _roomElements = RoomUser.audience.roomElements
-var meshkaEnhancedModel = Class.extend({
+var TFLEnhancedModel = Class.extend({
     version: {
         major: 1,
         minor: 2,
-        patch: 0
+        patch: 1
     },
     init: function(){
         setTimeout($.proxy(this.initCSS,this), 1500)
@@ -47,7 +47,7 @@ var meshkaEnhancedModel = Class.extend({
         Lang.ui.buttonDJQuitShort = "http://i.imgur.com/krkSXRv.png";
         Lang.ui.buttonDJQuit = "http://i.imgur.com/krkSXRv.png";
         Lang.ui.buttonDJPlayShort = "http://i.imgur.com/8Minrha.png";
-        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove IFZ Enhanced script</em>"
+        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em>"
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
@@ -83,7 +83,7 @@ var meshkaEnhancedModel = Class.extend({
             if ("/strobe off" == a) return RoomUser.audience.strobeMode(false), !0;
             if ("/rave on" == a) {log(Models.user.data.username + ' turned the lights down!'); return RoomUser.audience.lightsOut(true), !0;};
             if ("/rave off" == a) return RoomUser.audience.lightsOut(false), !0;
-            if ("/close" == a) return meshkaEnhanced.close(), !0;
+            if ("/close" == a) return TFLEnhanced.close(), !0;
             if ("/users" == a) return UserListOverlay.show(), !0;
             if ("/hd on" == a) return Playback.setHD(!0), !0;
             if ("/hd off" == a) return Playback.setHD(!1), !0;
@@ -120,7 +120,7 @@ var meshkaEnhancedModel = Class.extend({
 
     },
     close: function(){
-        $('#meshka-css').remove();
+        $('#TFL-css').remove();
         $('#room-wheel').css('background','url("http://plug.dj/_/static/images/room_wheel2.0ea1fb92.png")');
         $('#button-vote-negative').show();
         $('#button-dj-waitlist-join').attr('style','background-image:url(http://plug.dj/_/static/images/en/ButtonDJWaitListJoin.fbffc481.png); display: block;');
@@ -210,7 +210,7 @@ var meshkaEnhancedModel = Class.extend({
     $('#playback .frame-background').hide('.frame-background');
     $('#playback').css('background-color','transparent');
         $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
-            + '<style type="text/css" id="meshka-css">'
+            + '<style type="text/css" id="TFL-css">'
             + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
             + '#button-lobby { background-image: url("http://i.imgur.com/DNiULH5.png");}'
             + 'body {color:#66FFFF;}'
@@ -272,4 +272,4 @@ var meshkaEnhancedModel = Class.extend({
         }
     }
 });
-var meshkaEnhanced = new meshkaEnhancedModel;
+var TFLEnhanced = new TFLEnhancedModel;
