@@ -47,6 +47,7 @@ var TFLEnhancedModel = Class.extend({
         Lang.ui.buttonDJQuitShort = "http://i.imgur.com/krkSXRv.png";
         Lang.ui.buttonDJQuit = "http://i.imgur.com/krkSXRv.png";
         Lang.ui.buttonDJPlayShort = "http://i.imgur.com/8Minrha.png";
+        Lang.rollover.host = "The Boss"
         Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em>"
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
