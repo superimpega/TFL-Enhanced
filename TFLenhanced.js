@@ -3,57 +3,6 @@ if (TFLEnhanced !== undefined)
 String.prototype.equalsIgnoreCase = function(other) {
     return this.toLowerCase() === other.toLowerCase();
 };
-function color_from_hue(hue)
-{
-  var h = hue/60;
-  var c = 255;
-  var x = (1 - Math.abs(h%2 - 1))*255;
-  var color;
- 
-  var i = Math.floor(h);
-  if (i == 0) color = rgb_to_hex(c, x, 0);
-  else if (i == 1) color = rgb_to_hex(x, c, 0);
-  else if (i == 2) color = rgb_to_hex(0, c, x);
-  else if (i == 3) color = rgb_to_hex(0, x, c);
-  else if (i == 4) color = rgb_to_hex(x, 0, c);
-  else color = rgb_to_hex(c, 0, x);
- 
-  return color;
-}
- 
-function rgb_to_hex(red, green, blue)
-{
-  var h = ((red << 16) | (green << 8) | (blue)).toString(16);
-  // add the beginning zeros
-  while (h.length < 6) h = '0' + h;
-  return '#' + h;
-}
-(function( $ ) {
- 
-  $.fn.rainbowize = function() {
-    return this.each(function() {
-      var rainbowtext = '';
-      var hue=0;
-      var step=0;
- 
-      // get the current text inside element
-      var text = $(this).text();
- 
-      // hue is 360 degrees
-      if (text.length > 0)
-        step = 360 / (text.length);
- 
-      // iterate the whole 360 degrees
-      for (var i = 0; i < text.length; i++)
-      {
-        rainbowtext = rainbowtext + '<span style="color:' + color_from_hue(hue) + '">' + text.charAt(i) + '</span>';
-        hue += step;
-      }
- 
-      $(this).html(rainbowtext);
-    });
-  };
-})( jQuery );
 var plugCubed,
 _roomElements = RoomUser.audience.roomElements
 var TFLEnhancedModel = Class.extend({
@@ -169,72 +118,6 @@ var TFLEnhancedModel = Class.extend({
         log('<span style="color:#FF0000"><i>Running TFL Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
         log('<span style="color:#FFFF00">Join our facebook group </span>: http://goo.gl/OKI4h')
         if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
-        Models.chat.onChatReceived = function (obj) {
-            var mention = Utils.cleanASCII(obj.message).indexOf('@' + Utils.cleanASCII(Models.user.data.username)) > -1;
-            if (mention && obj.type != 'emote') obj.type = 'mention';
-            if (obj.type == 'log') obj.type = 'moderation';
-            var message = {
-                type: obj.type
-            };
-            var colon = obj.from && (obj.type == 'message' || obj.type == 'mention') ? ': ' : '';
-            if (obj.from) {
-                message.from = {
-                    value: $('<span/>').html(Utils.cleanTypedString(obj.from)).text(),
-                    class: 'chat-from'
-                };
-                if (obj.fromID) {
-                    message.from.class =
-                        obj.type == "emote"                                          ? "chat-from"            :
-                        obj.fromID == '50aeb077877b9217e2fbff00'                     ? "chat-from-colgate"    :
-                        Models.user.hasPermission(Models.user.ADMIN,obj.fromID)      ? "chat-from-admin"      :
-                        Models.user.hasPermission(Models.user.AMBASSADOR,obj.fromID) ? "chat-from-ambassador" :
-                        Models.user.hasPermission(Models.user.HOST,obj.fromID)       ? "chat-from-host"       :
-                        Models.user.hasPermission(Models.user.COHOST,obj.fromID)     ? "chat-from-cohost"     :
-                        Models.user.hasPermission(Models.user.MANAGER,obj.fromID)    ? "chat-from-manager"    :
-                        Models.user.hasPermission(Models.user.BOUNCER,obj.fromID)    ? "chat-from-bouncer"    :
-                        Models.user.hasPermission(Models.user.FEATUREDDJ,obj.fromID) ? "chat-from-featureddj" :
-                        obj.fromID == Models.user.data.id                            ? "chat-from-you"        :
-                                                                                       "chat-from";
-
-                    if (Models.user.hasPermission(Models.user.ADMIN,obj.fromID))                                message.from.admin      = true;
-                    else if (Models.user.hasPermission(Models.user.AMBASSADOR,obj.fromID))                      message.from.ambassador = true;
-                    else if (Models.user.hasPermission(Models.user.HOST,obj.fromID))                            message.from.owner      = true;
-                    else if (Models.room.data.staff[obj.fromID] && 5 > Models.room.data.staff[obj.fromID])      message.from.staff      = Models.room.data.staff[obj.fromID];
-                    message.from.id = obj.fromID;
-                    if (obj.fromID != Models.user.data.id)  {
-                        message.from.clickable = true;
-                        message.deletable = false;
-                    }
-                    if (Models.user.hasPermission(Models.user.BOUNCER) && (!Models.user.hasPermission(Models.user.BOUNCER,obj.fromID) || Models.user.subPermission(obj.fromID))) message.deletable = true;
-                    message.chatID = obj.chatID;
-                }
-            }
-            message.timestamp = Utils.getChatTimestamp(DB.settings.chatTS == 24);
-            if (!DB.settings.chatTranslation || !obj.translated) {
-                message.text = colon + this.parse(obj.message);
-            } else if (obj.translated != 1) {
-                message.text = colon + this.parse(obj.translated);
-                message.lang = {
-                    html: '<br/><em>[' + this.languageMap[obj.language] + ']</em>',
-                    title: $('<span/>').html(this.parse(obj.message, true)).text()
-                };
-            } else {
-                message.text = colon + this.parse(obj.message);
-                message.lang = {
-                    html: '<br/><em>[' + this.languageMap[obj.language] + ']</em>',
-                    title: Lang.tooltips.couldNotTranslate
-                };
-            }
-            message.showTimestamp = DB.settings.chatTS;
-            if (obj.fromID && DB.settings.chatSound != 'off') {
-                if (!mention) {
-                    if (DB.settings.chatSound != 'mentions') message.sound = 'chat';
-                } else message.sound = 'mention';
-            }
-            this.dispatchEvent('chatReceived', {
-                message: message
-            });
-        }
 
     },
     close: function(){
@@ -366,7 +249,6 @@ var TFLEnhancedModel = Class.extend({
             + '.chat-message .chat-from, .chat-mention .chat-from {padding-left:17px;}'
             + '.chat-from-you {background: url("http://i.imgur.com/aIrI4Hh.png") no-repeat;}'
             + '.chat-from-you {padding-left:17px;}'
-            + '.chat-from-colgate {background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;}'
             + '.chat-manager {color:#20F92E}'
             + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000 !important;}'
             + '.chat-message .chat-from-cohost, .chat-mention .chat-from-cohost {color:#0D00FF !important;}'
