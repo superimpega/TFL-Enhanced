@@ -75,8 +75,8 @@ TFLEnhancedModel = require('app/base/Class').extend({
         API.on(API.CHAT,this.proxy.onChat)
         API.chatLog('<span style="color:#FF0000"><i>Running TFL Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span>');
         API.chatLog('<span style="color:#FFFF00">Join our facebook group </span>: http://goo.gl/OKI4h')
+        this.removeElements();
         if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
-
     },
     close: function(){
         $('#TFL-css').remove();
@@ -194,6 +194,20 @@ TFLEnhancedModel = require('app/base/Class').extend({
         } else if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)  || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave off') === 0) {
             AudienceView.lightsOut();
         }
+    },
+    removeElements: function() {
+        require('app/views/room/AudienceView').initRoomElements = function() {}
+        require('app/views/room/AudienceView').defaultRoomElements = function(){}
+        require('app/views/room/AudienceView').roomElements = []
+        delete require('app/views/room/AudienceView').cactusHit
+        delete require('app/views/room/AudienceView').cactus
+        delete require('app/views/room/AudienceView').mountainHit
+        delete require('app/views/room/AudienceView').mountain
+        delete require('app/views/room/AudienceView').archHit
+        delete require('app/views/room/AudienceView').arch
+        delete require('app/views/room/AudienceView').cloudHit
+        delete require('app/views/room/AudienceView').cloud
+        require('app/base/Context').trigger('audience:redraw')
     }
 });
 var TFLEnhanced = new TFLEnhancedModel;
