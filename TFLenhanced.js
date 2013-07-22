@@ -1,3 +1,8 @@
+/* Created by Colgate and thedark1337. Please ask us for permission before using this script. Do not blatantly copy 
+and not credit us for our work. We do not appreciate people that steal without permission. This is your one and only 
+warning. Any person found to be violating this will have severe consequences. */
+
+
 if (TFLEnhanced !== undefined)
     TFLEnhanced.close();
 String.prototype.equalsIgnoreCase = function(other) {
@@ -27,25 +32,25 @@ TFLEnhancedModel = require('app/base/Class').extend({
         String.prototype.prepareRegex = function() {
             return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
         };
-        Lang.ui.buttonVotePositive = "http://i.imgur.com/xA8Pu4k.png";
-        Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/dnvDuWh.png";
-        Lang.ui.buttonVotePositiveDisabled = "http://i.imgur.com/xA8Pu4k.png";
-        Lang.ui.buttonAddThis = "http://i.imgur.com/LxrhgJi.png";
-        Lang.ui.buttonAddThisDisabled = "http://i.imgur.com/LxrhgJi.png";
-        Lang.ui.buttonSkipThis  = "http://i.imgur.com/o2CQhnj.png";
+        Lang.ui.buttonVotePositive = "http://i.imgur.com/AavorRZ.png";
+        Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/nPqYDEs.png";
+        Lang.ui.buttonVotePositiveDisabled = "http://i.imgur.com/AavorRZ.png";
+        Lang.ui.buttonAddThis = "http://i.imgur.com/IwFRCVd.png";
+        Lang.ui.buttonAddThisDisabled = "http://i.imgur.com/IwFRCVd.png";   
+        Lang.ui.buttonSkipThis  = "http://i.imgur.com/kL3MvJm.png";
         Lang.rollover.fans = "Minions"
         Lang.messages.fanEnter = "Your minion %NAME% just joined the room!"
         Lang.messages.fanOf = "You are now a minion of %NAME%."
         Lang.messages.unFanOf = "You are no longer a minion of %NAME%."
         Lang.messages.follow = "%NAME% is now your minion!"
         Lang.rollover.becomeFan = "Become a minion"
-        Lang.ui.buttonDJPlay = "http://i.imgur.com/8Minrha.png";
-        Lang.ui.buttonDJLeave = "http://i.imgur.com/krkSXRv.png";
-        Lang.ui.buttonDJWaitlistJoin = "http://i.imgur.com/8Minrha.png";
-        Lang.ui.buttonDJWaitlistLeave = "http://i.imgur.com/krkSXRv.png";
-        Lang.ui.buttonDJQuitShort = "http://i.imgur.com/krkSXRv.png";
-        Lang.ui.buttonDJQuit = "http://i.imgur.com/krkSXRv.png";
-        Lang.ui.buttonDJPlayShort = "http://i.imgur.com/8Minrha.png";
+        Lang.ui.buttonDJPlay = "http://i.imgur.com/SqU01C6.png";
+        Lang.ui.buttonDJLeave = "http://i.imgur.com/i4YkTFC.png";
+        Lang.ui.buttonDJWaitlistJoin = "http://i.imgur.com/SqU01C6.png";
+        Lang.ui.buttonDJWaitlistLeave = "http://i.imgur.com/i4YkTFC.png";
+        Lang.ui.buttonDJQuitShort = "http://i.imgur.com/i4YkTFC.png";
+        Lang.ui.buttonDJQuit = "http://i.imgur.com/i4YkTFC.png";
+        Lang.ui.buttonDJPlayShort = "http://i.imgur.com/SqU01C6.png";
         Lang.rollover.host = "The Boss"
         Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em>"
         $('#button-vote-negative').hide();
@@ -122,33 +127,33 @@ TFLEnhancedModel = require('app/base/Class').extend({
         $('#room-wheel').css('background-repeat','no-repeat');
         $('#room-wheel').css('background-position','500px 275px');
         $('#meta-frame .frame-background').hide('.frame-background');
-        $('#button-dj-waitlist-join').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
-        $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
-        $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/8Minrha.png); display: block;');
-        $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/krkSXRv.png); display: block;');
+        $('#button-dj-waitlist-join').attr('style','background-image:url(http://i.imgur.com/SqU01C6.png); display: block;');
+        $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/i4YkTFC.png); display: block;');
+        $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/SqU01C6.png); display: block;');
+        $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/i4YkTFC.png); display: block;');
         $('#dj-console').attr('style','background-image:url(http://i.imgur.com/bLYq7gA.png); display:block; position:absolute; top:15px; width:317px;');
-        $('#button-add-this').attr('style','background-image:url(http://i.imgur.com/LxrhgJi.png);');
+        $('#button-add-this').attr('style','background-image:url(http://i.imgur.com/IwFRCVd.png);');
     $('#meta-frame').css('background-color','transparent');
     $('#playback .frame-background').hide('.frame-background');
     $('#playback').css('background-color','transparent');
         $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
             + '<style type="text/css" id="TFL-css">'
             + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
-            + '#button-lobby { background-image: url("http://i.imgur.com/DNiULH5.png");}'
+            + '#button-lobby { background-image: url("http://i.imgur.com/GjbQ4IK.png");}'
             + 'body {color:#66FFFF;}'
             + '#current-dj-value {color:#66FFFF;}'
             + '.chat-title {font-family: "Faster One", cursive;}'
-            + '#button-dj-play.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
-            + '#button-dj-quit.button-dj {    background-image: url("http://i.imgur.com/krkSXRv.png");}'
-            + '#button-dj-waitlist-join.button-dj {background-image: url("http://i.imgur.com/8Minrha.png");}'
-            + '#button-dj-waitlist-leave.button-dj {background-image: url("http://i.imgur.com/krkSXRv.png");}'
-            + '#button-dj-waitlist-view {background-image: url("http://i.imgur.com/JRKjxo1.png");}'
-            + '#button-my-playlists {background-image: url("http://i.imgur.com/evZdc5M.png");}'
-            + '#button-share-facebook {background-image: url("http://i.imgur.com/EbP8DqH.png");}'
-            + '#button-share-twitter {background-image: url("http://i.imgur.com/tLo3Jrd.png");}'
-            + '#button-refresh {background-image: url("http://i.imgur.com/fSCX85l.png");}'
-            + '#button-hd-on {background-image: url("http://i.imgur.com/UNDkKE2.png");}'
-            + '#button-hd-off {background-image: url("http://i.imgur.com/slXKnox.png");}'
+            + '#button-dj-play.button-dj {background-image: url("http://i.imgur.com/SqU01C6.png");}'
+            + '#button-dj-quit.button-dj {background-image: url("http://i.imgur.com/i4YkTFC.png");}'
+            + '#button-dj-waitlist-join.button-dj {background-image: url("http://i.imgur.com/SqU01C6.png");}'
+            + '#button-dj-waitlist-leave.button-dj {background-image: url("http://i.imgur.com/i4YkTFC.png");}'
+            + '#button-dj-waitlist-view {background-image: url("http://i.imgur.com/Ppaf1EX.png");}'
+            + '#button-my-playlists {background-image: url("http://i.imgur.com/PsMyBcu.png");}'
+            + '#button-share-facebook {background-image: url("http://i.imgur.com/DxyDvh5.png");}'
+            + '#button-share-twitter {background-image: url("http://i.imgur.com/qNsYnNY.png");}'
+            + '#button-refresh {background-image: url("http://i.imgur.com/Do13WJg.png");}'
+            + '#button-hd-on {background-image: url("http://i.imgur.com/gEh7chb.png");}'
+            + '#button-hd-off {background-image: url("http://i.imgur.com/4xvCfmv.png");}'
             + '#current-dj-value {color:#66FFFF;}'
             + '#now-playing-value{color:#66FFFF;}'
             + '#room-score-value{color:#66FFFF;}'
@@ -157,18 +162,18 @@ TFLEnhancedModel = require('app/base/Class').extend({
             + '.chat-host {color:#4CFF00;}'
             + '.chat-emote {color:#FCFF00;}'    
             + '.chat-emote .chat-from {color:#FCFF00;}'
-            + '.chat-host {background-image: url("http://i.imgur.com/WhbiSGO.png");}'
-            + '.chat-cohost {background-image: url("http://i.imgur.com/IXHlBTx.png");}'
-            + '.chat-manager{background-image: url("http://i.imgur.com/HkhvLap.png");}'
-            + '.chat-bouncer{background-image: url("http://i.imgur.com/GtiQX7H.png");}' 
-            + '.chat-from-featureddj {background: url("http://i.imgur.com/0TFOAo0.png") no-repeat;}'
+            + '.chat-host {background-image: url("http://i.imgur.com/FIRn1Lp.png");}'
+            + '.chat-cohost {background-image: url("http://i.imgur.com/f5VVDSz.png");}'
+            + '.chat-manager{background-image: url("http://i.imgur.com/dJa4Svb.png");}'
+            + '.chat-bouncer{background-image: url("http://i.imgur.com/Q3I4vg0.png");}' 
+            + '.chat-from-featureddj {background: url("http://i.imgur.com/tlXvCWf.png") no-repeat;}'
             + '.chat-from-featureddj {padding-left:17px;}'
             + '.chat-message .chat-from-featureddj, .chat-mention .chat-from-featureddj {color:#0084FF !important;}'
             + '.chat-message .chat-from-bouncer, .chat-mention .chat-from-bouncer {color:#66CDD6 !important;}'
             + '.chat-message .chat-from-manager, .chat-mention .chat-from-manager {color:#92FFFF !important;}'
-            + '.chat-message .chat-from, .chat-mention .chat-from{background: url("http://i.imgur.com/aIrI4Hh.png") no-repeat;}'
+            + '.chat-message .chat-from, .chat-mention .chat-from{background: url("http://i.imgur.com/bJXq2aX.png") no-repeat;}'
             + '.chat-message .chat-from, .chat-mention .chat-from {padding-left:17px;}'
-            + '.chat-from-you {background: url("http://i.imgur.com/aIrI4Hh.png") no-repeat;}'
+            + '.chat-from-you {background: url("http://i.imgur.com/bJXq2aX.png") no-repeat;}'
             + '.chat-from-you {padding-left:17px;}'
             + '.chat-manager {color:#20F92E}'
             + '.chat-message .chat-from-host, .chat-mention .chat-from-host {color:#FF4000 !important;}'
@@ -179,7 +184,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
             + '.chat-text a:visited {color:#22FF00;}'
             + '.chat-text a:hover {color:#EF00FF;}'
             + '.chat-text a:active {color:#66FFFF;}'
-            + '#volume-bar-value {background-image: url("http://i.imgur.com/Qzqn3OG.png");}' 
+            + '#volume-bar-value {background-image: url("http://i.imgur.com/HF5pnAR.png");}' 
         + '</style>');
 },
     onChat: function(data) {
