@@ -131,14 +131,14 @@ TFLEnhancedModel = require('app/base/Class').extend({
         $('#button-dj-waitlist-leave').attr('style','background-image:url(http://i.imgur.com/i4YkTFC.png); display: block;');
         $('#button-dj-play').attr('style','background-image:url(http://i.imgur.com/SqU01C6.png); display: block;');
         $('#button-dj-leave').attr('style','background-image:url(http://i.imgur.com/i4YkTFC.png); display: block;');
-        $('#dj-console').attr('style','background-image:url(http://i.imgur.com/bLYq7gA.png); display:block; position:absolute; top:15px; width:317px;');
+        $('#dj-console').attr('style','background-image:url(http://i.imgur.com/3qAzTBl.png); display:block; position:absolute; top:15px; width:317px;');
         $('#button-add-this').attr('style','background-image:url(http://i.imgur.com/IwFRCVd.png);');
     $('#meta-frame').css('background-color','transparent');
     $('#playback .frame-background').hide('.frame-background');
     $('#playback').css('background-color','transparent');
         $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
             + '<style type="text/css" id="TFL-css">'
-            + 'html{background: url("http://i.imgur.com/uEA8d5Y.jpg") no-repeat scroll center top #000000;}'
+            + 'html{background: url("http://i.imgur.com/PmdPoHM.png") no-repeat scroll center top #000000;}'
             + '#button-lobby { background-image: url("http://i.imgur.com/GjbQ4IK.png");}'
             + 'body {color:#66FFFF;}'
             + '#current-dj-value {color:#66FFFF;}'
