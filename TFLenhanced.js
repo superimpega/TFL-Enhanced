@@ -28,7 +28,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
             "Time Remaining" : "Time Wasted",
             "Volume" : "Crank it up!",
             "Current DJ" : "Current DJ",
-            "Crowd Response" : "Crowd's Reaction",
+            "Crowd Approval" : "Crowd's Reaction",
             "Fans":"Minions"
         };
         String.prototype.prepareRegex = function() {
@@ -45,7 +45,11 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.messages.fanOf = "You are now a minion of %NAME%."
         Lang.messages.unFanOf = "You are no longer a minion of %NAME%."
         Lang.messages.follow = "%NAME% is now your minion!"
+        Lang.messages.welcome = "Welcome to the bug.dj beta. Version %VERSION%"
+        Lang.messages.cap = "Capping fuckers at %COUNT%"
         Lang.rollover.becomeFan = "Become a minion"
+        Lang.rollover.fans = "Minions"
+        Lang.alerts.updateMesage ="bug.dj has been updated and requires a refresh. Click OK to refresh the page."
         Lang.ui.buttonDJPlay = "http://i.imgur.com/SqU01C6.png";
         Lang.ui.buttonDJLeave = "http://i.imgur.com/i4YkTFC.png";
         Lang.ui.buttonDJWaitlistJoin = "http://i.imgur.com/SqU01C6.png";
@@ -115,13 +119,16 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.ui.buttonDJQuitShort = "http://plug.dj/_/static/images/en/ButtonDJQuitShort.8e572d1a.png";
         Lang.ui.buttonDJQuit = "http://plug.dj/_/static/images/en/ButtonDJQuit.1a691d0c.png";
         Lang.ui.buttonDJPlayShort = "http://plug.dj/_/static/images/en/ButtonDJPlayShort.b88f8f86.png";
-        Lang.rollover.fans = "fans"
         Lang.messages.fanEnter = "Your fan %NAME% just joined the room!"
         Lang.messages.fanOf = "You are now a fan of %NAME%."
         Lang.messages.unFanOf = "You are no longer a fan of %NAME%." 
         Lang.messages.follow = "%NAME% is now your fan!"
+        Lang.messages.welcome = "Welcome to the plug.dj beta. Version %VERSION%"
+        Lang.messages.cap = "Capping avatars at %COUNT%"
         Lang.rollover.becomeFan = "Become a fan"
+        Lang.rollover.fans = "fans"
         Lang.rollover.host = "Host"
+        Lang.alerts.updateMesage ="plug.dj has been updated and requires a refresh. Click OK to refresh the page."
         Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br/>/emoji on (or off) <em>Enable/disable Emojis</em>"        
         API.off(API.CHAT,this.proxy.onChat)
         API.off(API.CHAT_COMMAND,this.customChatCommand)
