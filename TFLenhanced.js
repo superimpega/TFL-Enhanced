@@ -54,7 +54,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.ui.buttonDJQuit = "http://i.imgur.com/i4YkTFC.png";
         Lang.ui.buttonDJPlayShort = "http://i.imgur.com/SqU01C6.png";
         Lang.rollover.host = "The Boss"
-        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em>"
+        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em>"
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
@@ -80,6 +80,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
             onChat: $.proxy(this.onChat, this)
         };
         API.on(API.CHAT,this.proxy.onChat)
+        API.on(API.CHAT_COMMAND,this.customChatCommand)
          var a = $('#chat-messages'),b = a.scrollTop() > a[0].scrollHeight - a.height() - 20;
         a.append('<div class="chat-update"><span class="chat-text" style="color:#FF0000"><i>Running TFL Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span></div>');
         a.append('<div class="chat-update"><span style="color:#FFFF00">Join our facebook group </span> : <a href="http://goo.gl/OKI4h">FB</a></div>')
@@ -120,8 +121,10 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.messages.unFanOf = "You are no longer a fan of %NAME%." 
         Lang.messages.follow = "%NAME% is now your fan!"
         Lang.rollover.becomeFan = "Become a fan"
-        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em>"
+        Lang.rollover.host = "Host"
+        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br/>/emoji on (or off) <em>Enable/disable Emojis</em>"        
         API.off(API.CHAT,this.proxy.onChat)
+        API.off(API.CHAT_COMMAND,this.customChatCommand)
         if(plugCubed != undefined) plugCubed.close();
         plugCubed = undefined
     },
@@ -247,6 +250,14 @@ initPopout : function(){
         } else if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)  || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave off') === 0) {
             AudienceView.lightsOut();
         }
+    },
+    customChatCommand: function(value) {
+         var  AudienceView = require ('app/views/room/AudienceView');
+        if (value == '/strobe on'){API.chatLog(API.getUser().username +  ' hit the strobe light!'); AudienceView.strobeMode('true'), !0}
+        if (value == '/strobe off'){AudienceView.strobeMode(),!0}
+        if (value == '/rave on'){API.chatLog(API.getUser().username + ' turned the lights down!'); AudienceView.lightsOut('true'),!0}
+        if (value == '/rave off'){AudienceView.lightsOut(),!0}
+        if (value == '/close'){return TFLEnhanced.close(),!0}
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
