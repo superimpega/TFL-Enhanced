@@ -58,7 +58,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.ui.buttonDJQuit = "http://i.imgur.com/i4YkTFC.png";
         Lang.ui.buttonDJPlayShort = "http://i.imgur.com/SqU01C6.png";
         Lang.rollover.host = "The Boss"
-        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em>"
+        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em> <br /> /Avatar number &nbsp; <em> change Halloween Avatars ( number = 1 to 13)</em>"
         $('#button-vote-negative').hide();
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
@@ -265,6 +265,19 @@ initPopout : function(){
         if (value == '/rave on'){API.chatLog(API.getUser().username + ' turned the lights down!'); AudienceView.lightsOut('true'),!0}
         if (value == '/rave off'){AudienceView.lightsOut(),!0}
         if (value == '/close'){return TFLEnhanced.close(),!0}
+        if (value.indexOf('/Avatar')=== 0){
+            var i =value.substr(8);
+            if(i >= 10)
+                {
+                var avatar = require('app/services/user/UserChangeAvatarService'); 
+                 avatar = new avatar('halloween'+ i);
+                };
+            if(i<=9)
+             {
+                var avatar = require('app/services/user/UserChangeAvatarService');
+                avatar = new avatar('halloween0'+ i);
+             };
+        }
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
