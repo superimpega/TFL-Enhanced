@@ -60,6 +60,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.rollover.host = "The Boss"
         Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em> <br /> /Avatar number &nbsp; <em> change Halloween Avatars ( number = 1 to 13)</em>"
         $('#button-vote-negative').hide();
+        $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)})
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
         };
