@@ -154,7 +154,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         $('#meta-frame').css('background-color','transparent');
         $('#playback .frame-background').hide('.frame-background');
         $('#playback').css('background-color','transparent');
-        $('body').attr('style','background-image: url(http://i.imgur.com/NtKtM5t.png); no-repeat scroll center top #000000;');
+        $('body').attr('style','background: none');
             $('head').append('<link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">'
             + '<style type="text/css" id="TFL-css">'
             + 'html{background: url("http://i.imgur.com/NtKtM5t.png") no-repeat scroll center top #000000;}'
