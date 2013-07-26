@@ -10,6 +10,7 @@ String.prototype.equalsIgnoreCase = function(other) {
     return this.toLowerCase() === other.toLowerCase();
 };
 var plugCubed,
+plugBot,
 TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 1,
@@ -135,6 +136,8 @@ TFLEnhancedModel = require('app/base/Class').extend({
         API.off(API.CHAT_COMMAND,this.customChatCommand)
         if(plugCubed != undefined) plugCubed.close();
         plugCubed = undefined
+        if(plugBot != undefined) plugBot.close();
+        plugBot = undefined
     },
     initCSS: function() {
         $('#room-wheel').css('background','url("https://github.com/Colgate/TFL-Enhanced/raw/master/extras/TFL.gif")');
@@ -279,6 +282,7 @@ initPopout : function(){
                 avatar = new avatar('halloween0'+ i);
              };
         }
+       if (value == '/Auto On'){if(plugBot==undefined){$.getScript('https://raw.github.com/thedark1337/Plugbot/master/plugbot.js')}};
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
