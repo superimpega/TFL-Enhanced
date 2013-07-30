@@ -263,6 +263,10 @@ initPopout : function(){
         } else if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)  || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave off') === 0) {
             AudienceView.lightsOut();
         }
+        if (data.fromID == '5194c32d96fba57f21243cc4')
+        {
+            $('.chat-manager').attr('style','background-image:url(http://i.imgur.com/hPQ6ghY.png);');
+        }
     },
     customChatCommand: function(value) {
          var  AudienceView = require ('app/views/room/AudienceView');
