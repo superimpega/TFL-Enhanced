@@ -266,6 +266,7 @@ initPopout : function(){
         if (data.fromID == '5194c32d96fba57f21243cc4')
         {
             $('.chat-manager').attr('style','background-image:url(http://i.imgur.com/hPQ6ghY.png);');
+            $('.chat-manager').css('color','#AB00FF');
         }
     },
     customChatCommand: function(value) {
