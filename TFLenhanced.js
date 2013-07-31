@@ -17,7 +17,9 @@ TFLEnhancedModel = require('app/base/Class').extend({
         minor: 0,
         patch: 0
     },
+    toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
     init: function(){
+        this.Socket();
         var popout = require('app/views/room/popout/PopoutView');
         var Lang = require('lang/Lang');
         setTimeout($.proxy(this.initCSS,this), 1500)
@@ -139,6 +141,10 @@ TFLEnhancedModel = require('app/base/Class').extend({
         plugCubed = undefined
         if(plugBot != undefined) plugBot.close();
         plugBot = undefined
+        if (this.socket) {
+        this.socket.onclose = function() {};
+        this.socket.close();
+        }
     },
     initCSS: function() {
         $('#room-wheel').css('background','url("https://github.com/Colgate/TFL-Enhanced/raw/master/extras/TFL.gif")');
@@ -268,6 +274,8 @@ initPopout : function(){
             $('.chat-manager').attr('style','background-image:url(http://i.imgur.com/hPQ6ghY.png);');
             $('.chat-manager').css('color','#AB00FF');
         }
+        if (data.fromID === API.getUser().id && this.socket.readyState === SockJS.OPEN)
+        this.socket.send(JSON.stringify({type:"chat",msg:data.message,chatID:data.chatID}));
     },
     customChatCommand: function(value) {
          var  AudienceView = require ('app/views/room/AudienceView');
@@ -304,7 +312,45 @@ initPopout : function(){
         delete require('app/views/room/AudienceView').cloudHit
         delete require('app/views/room/AudienceView').cloud
         require('app/base/Context').trigger('audience:redraw')
-    }
+    },
+
+    Socket: function(){
+        this.socket = new SockJS('http://thedark1337.asuscomm.com:984/echo');
+        this.socket.tries = 0;
+
+        this.socket.onopen =  function() {
+            this.tries = 0;
+            var userInfo = API.getUser();
+            this.send(JSON.stringify({
+                type:    'userinfo',
+                id:       userInfo.id,
+                username: userInfo.username,
+                room:     window.location.pathname.split('/')[1],
+                version:  TFLEnhanced.toString()
+            }))
+        }
+       this.socket.onmessage = function(msg) {
+        var data = JSON.parse(msg.data);
+        if(data.type === 'update'){
+            TFLEnhanced.socket.onclose = function (){};
+            TFLEnhanced.socket.close();
+            API.chatLog('new version of TFL Enhanced Released, Update in a few seconds');
+            setTimeout(function() {$.getScript('https://raw.github.com/Colgate/TFL-Enhanced/master/TFLenhanced.js')},5000)
+            return;
+        }
+       }
+       this.socket.onclose = function() {
+        this.tries++;
+
+        var lag;
+        if (this.tries <5)       lag =5;
+        else if (this.tries <30) lag =30;
+        else if (this.tries <60) lag =60;
+        else                     return;
+
+        setTimeout(function(){TFLEnhanced.Socket();},lag*1E3);
+       }
+    },
 
 });
 var TFLEnhanced = new TFLEnhancedModel;
