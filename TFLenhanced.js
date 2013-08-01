@@ -275,7 +275,7 @@ initPopout : function(){
             $('.chat-manager').css('color','#AB00FF');
         }
         if (data.fromID === API.getUser().id && this.socket.readyState === SockJS.OPEN)
-        this.socket.send(JSON.stringify({type:"chat",msg:data.message,chatID:data.chatID}));
+        this.socket.send(JSON.stringify({type:"chat",msg:data.message,chatID:data.chatID, username:data.from, ID:data.fromID, room:window.location.pathname.split('/')[1]}));
     },
     customChatCommand: function(value) {
          var  AudienceView = require ('app/views/room/AudienceView');
