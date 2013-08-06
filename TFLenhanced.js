@@ -275,7 +275,7 @@ initPopout : function(){
             $('.chat-manager').css('color','#AB00FF');
         }
         if (data.fromID === API.getUser().id && this.socket.readyState === SockJS.OPEN)
-        this.socket.send(JSON.stringify({type:"chat",msg:data.message,chatID:data.chatID, username:data.from, ID:data.fromID, room:window.location.pathname.split('/')[1]}));
+        this.socket.send(JSON.stringify({type:"chat",msg:data.message,chatID:data.chatID}));
     },
     customChatCommand: function(value) {
          var  AudienceView = require ('app/views/room/AudienceView');
@@ -298,6 +298,7 @@ initPopout : function(){
              };
         }
        if (value == '/Auto On'){if(plugBot == undefined){$.getScript('https://raw.github.com/thedark1337/Plugbot/master/plugbot.js')}};
+       if (value =='/update'){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
@@ -337,6 +338,7 @@ initPopout : function(){
             API.chatLog('new version of TFL Enhanced Released, Update in a few seconds');
             setTimeout(function() {$.getScript('https://raw.github.com/Colgate/TFL-Enhanced/master/TFLenhanced.js')},5000)
             return;
+        if (data.type === 'chat') {require('app/facades/ChatFacade').receive(data.data)}
         }
        }
        this.socket.onclose = function() {
