@@ -60,7 +60,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.ui.buttonDJQuit = "http://i.imgur.com/i4YkTFC.png";
         Lang.ui.buttonDJPlayShort = "http://i.imgur.com/SqU01C6.png";
         Lang.rollover.host = "The Boss"
-        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em> <br /> /Avatar number &nbsp; <em> change Halloween Avatars ( number = 1 to 13)</em> <br /> /Auto On &nbsp; <em> plugbot load </em>"
+        Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em> <br /> /Avatar # &nbsp; <em> change Halloween Avatars ( # = 1-13)</em> <br /> /Auto On &nbsp; <em> plugbot load </em>"
         $('#button-vote-negative').hide();
         $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)});
         function isOkTag(tag) {
@@ -255,18 +255,17 @@ initPopout : function(){
             else css.appendChild(document.createTextNode(styles));
             popout._window.document.head.appendChild(css);
 },
-    onChat: function(data) {
-        var  AudienceView = require ('app/views/room/AudienceView');
+    onChat: function(data){
         if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)  || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!strobe on') === 0) {
             API.chatLog(data.from + ' hit the strobe light!');
-           AudienceView.strobeMode('true');
+           require ('app/views/room/AudienceView').strobeMode('true');
         } else if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)|| data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!strobe off') === 0) {
-            AudienceView.strobeMode();
+            require ('app/views/room/AudienceView').strobeMode();
         } else if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)  || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave on') === 0) {
             API.chatLog(data.from + ' turned the lights down!');
-             AudienceView.lightsOut('true');
+             require ('app/views/room/AudienceView').lightsOut('true');
         } else if (data.type == 'message' && (API.hasPermission(data.fromID, API.ROLE.MANAGER)  || data.fromID == "50aeb077877b9217e2fbff00") && data.message.indexOf('!rave off') === 0) {
-            AudienceView.lightsOut();
+            require ('app/views/room/AudienceView').lightsOut();
         }
         if (data.fromID == '5194c32d96fba57f21243cc4')
         {
