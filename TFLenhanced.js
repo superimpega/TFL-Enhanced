@@ -15,15 +15,14 @@ TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 2,
         minor: 1,
-        patch: 0
+        patch: 1
     },
     toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
     init: function(){
         this.Socket();
         var popout = require('app/views/room/popout/PopoutView');
         var Lang = require('lang/Lang');
-        setTimeout($.proxy(this.initCSS,this), 1500)
-        $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)})
+        setTimeout($.proxy(this.initCSS,this), 1500);
                 var words = {
             // Syntax: 'Search word' : 'Replace word',
             "Points" : "Points",
@@ -63,7 +62,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         Lang.rollover.host = "The Boss"
         Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em> <br /> /Avatar number &nbsp; <em> change Halloween Avatars ( number = 1 to 13)</em> <br /> /Auto On &nbsp; <em> plugbot load </em>"
         $('#button-vote-negative').hide();
-        $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)})
+        $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)});
         function isOkTag(tag) {
             return (",pre,blockquote,code,input,button,textarea".indexOf(","+tag) == -1);
         };
@@ -298,7 +297,7 @@ initPopout : function(){
              };
         }
        if (value == '/Auto On'){if(plugBot == undefined){$.getScript('https://raw.github.com/thedark1337/Plugbot/master/plugbot.js')}};
-       if (value =='/update'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST)){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}}
+       if (value =='/update'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}}
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
