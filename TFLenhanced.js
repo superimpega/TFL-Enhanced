@@ -23,7 +23,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         var popout = require('app/views/room/popout/PopoutView');
         var Lang = require('lang/Lang');
         setTimeout($.proxy(this.initCSS,this), 1500)
-        $('#button-chat-popout').click((function(){$.proxy(this.initPopout,this);}))
+        $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)})
                 var words = {
             // Syntax: 'Search word' : 'Replace word',
             "Points" : "Points",
@@ -335,7 +335,7 @@ initPopout : function(){
         if(data.type === 'update'){
             TFLEnhanced.socket.onclose = function (){};
             TFLEnhanced.socket.close();
-            API.chatLog('new version of TFL Enhanced Released, Update in a few seconds');
+            API.chatLog('New version of TFL Enhanced Released, Update in a few seconds');
             setTimeout(function() {$.getScript('https://raw.github.com/Colgate/TFL-Enhanced/master/TFLenhanced.js')},5000)
             return;
         if (data.type === 'chat') {require('app/facades/ChatFacade').receive(data.data)}
