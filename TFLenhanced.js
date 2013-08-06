@@ -298,7 +298,7 @@ initPopout : function(){
              };
         }
        if (value == '/Auto On'){if(plugBot == undefined){$.getScript('https://raw.github.com/thedark1337/Plugbot/master/plugbot.js')}};
-       if (value =='/update'){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}
+       if (value =='/update'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST)){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}}
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
