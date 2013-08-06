@@ -14,7 +14,7 @@ plugBot,
 TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 2,
-        minor: 0,
+        minor: 1,
         patch: 0
     },
     toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
