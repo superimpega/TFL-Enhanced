@@ -15,7 +15,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 2,
         minor: 1,
-        patch: 1
+        patch: 2
     },
     toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
     init: function(){
@@ -336,9 +336,9 @@ initPopout : function(){
             API.chatLog('New version of TFL Enhanced Released, Update in a few seconds');
             setTimeout(function() {$.getScript('https://raw.github.com/Colgate/TFL-Enhanced/master/TFLenhanced.js')},5000)
             return;
+        }
         if (data.type === 'chat') {require('app/facades/ChatFacade').receive(data.data)}
         }
-       }
        this.socket.onclose = function() {
         this.tries++;
 
