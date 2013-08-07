@@ -92,7 +92,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
         a.append('<div class="chat-update"><span class="chat-text" style="color:#FF0000"><i>Running TFL Enhanced version ' + this.version.major + '.' + this.version.minor + '.' + this.version.patch + '</i></span></div>');
         a.append('<div class="chat-update"><span style="color:#FFFF00">Join our facebook group </span> : <a href="http://goo.gl/OKI4h">FB</a></div>')
         this.removeElements();
-        if (plugCubed == undefined) $.getScript("http://tatdk.github.io/plugCubed/compiled/plugCubed.min.js")
+        if (plugCubed == undefined) $.getScript("http://plugCubed.com/compiled/plugCubed.min.js")
     },
     close: function(){
         var Lang = require('lang/Lang');
@@ -297,6 +297,8 @@ initPopout : function(){
         }
        if (value == '/Auto On'){if(plugBot == undefined){$.getScript('https://raw.github.com/thedark1337/Plugbot/master/plugbot.js')}};
        if (value =='/update'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}}
+       if (value =='/reload'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"reload"}));}}
+
     },
     removeElements: function() {
         require('app/views/room/AudienceView').initRoomElements = function() {}
@@ -337,7 +339,10 @@ initPopout : function(){
             setTimeout(function() {$.getScript('https://raw.github.com/Colgate/TFL-Enhanced/master/TFLenhanced.js')},5000)
             return;
         }
-        if (data.type === 'chat') {require('app/facades/ChatFacade').receive(data.data)}
+        if(data.type === 'reload'){
+            API.chatLog('reloading all TFL Enhanced Users.')
+            location.reload();
+        }
         }
        this.socket.onclose = function() {
         this.tries++;
