@@ -15,7 +15,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 2,
         minor: 1,
-        patch: 2
+        patch: 3
     },
     toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
     init: function(){
@@ -298,6 +298,8 @@ initPopout : function(){
        if (value == '/Auto On'){if(plugBot == undefined){$.getScript('https://raw.github.com/thedark1337/Plugbot/master/plugbot.js')}};
        if (value =='/update'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"update"}));}}
        if (value =='/reload'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"reload"}));}}
+       if (value =='/strobeon'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"strobe",trigger:"true"}));}}
+       if (value =='/strobeoff'){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){TFLEnhanced.socket.send(JSON.stringify({type:"strobe",trigger:"false"}));}}
 
     },
     removeElements: function() {
@@ -340,8 +342,13 @@ initPopout : function(){
             return;
         }
         if(data.type === 'reload'){
-            API.chatLog('reloading all TFL Enhanced Users.')
             location.reload();
+        }
+        if(data.type ==='strobe'){
+            if(data.trigger =='true')
+                { require ('app/views/room/AudienceView').strobeMode('true')}
+            if(data.trigger =='false')
+                { require ('app/views/room/AudienceView').strobeMode()}
         }
         }
        this.socket.onclose = function() {
