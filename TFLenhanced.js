@@ -15,7 +15,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 2,
         minor: 1,
-        patch: 8
+        patch: 9
     },
     toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
     init: function(){
@@ -313,6 +313,14 @@ initPopout : function(){
         TFLEnhanced.socket.send(JSON.stringify({type:"strobe",trigger:"false"}))}
         }
     }
+           if (value.indexOf('/raves')===0){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){
+        if(value.substr(7) == 'on'){
+        TFLEnhanced.socket.send(JSON.stringify({type:"rave",trigger:"true"}));
+        }
+        if(value.substr(7)== 'off'){
+        TFLEnhanced.socket.send(JSON.stringify({type:"rave",trigger:"false"}))}
+        }
+    }
       if (value.indexOf('/broadcast')===0){if(API.hasPermission(API.getUser().id,API.ROLE.HOST) && API.getUser().id == '50b1961c96fba57db2230417'){
          var msg = value.substr(11);
          TFLEnhanced.socket.send(JSON.stringify({type:"broadcast",message:msg}))
@@ -367,6 +375,12 @@ initPopout : function(){
                 { require ('app/views/room/AudienceView').strobeMode('true')}
             if(data.trigger =='false')
                 { require ('app/views/room/AudienceView').strobeMode()}
+        }
+         if(data.type ==='rave'){
+            if(data.trigger =='true')
+                { require ('app/views/room/AudienceView').lightsOut('true')}
+            if(data.trigger =='false')
+                { require ('app/views/room/AudienceView').lightsOut()}
         }
         if(data.type ==='broadcast')
         {
