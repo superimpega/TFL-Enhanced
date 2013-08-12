@@ -14,8 +14,8 @@ plugBot,
 TFLEnhancedModel = require('app/base/Class').extend({
     version: {
         major: 2,
-        minor: 1,
-        patch: 9
+        minor: 2,
+        patch: 0
     },
     toString: function() { return TFLEnhanced.version.major + '.' + TFLEnhanced.version.minor + '.' + TFLEnhanced.version.patch},
     init: function(){
@@ -98,7 +98,7 @@ TFLEnhancedModel = require('app/base/Class').extend({
             var a = $('#chat-messages'),b = a.scrollTop() > a[0].scrollHeight - a.height() - 20;
             a.append('<div class="chat-update"><span class="chat-text" style="color:#FF0000"><strong>[Window Alert]</strong></span><span style="color:#FFFFFF"> : ' + data + '</span></div>'); 
             b && a.scrollTop(a[0].scrollHeight);
-            TFLEnhanced.socket.send(JSON.stringify({type:"disconnect",msg:data,Username:API.getUser().username,Room:window.location.pathname.split('/')[1]}));
+            setTimeout(function(){location.reload()},1500)
             };
     },
     close: function(){
@@ -385,10 +385,6 @@ initPopout : function(){
         if(data.type ==='broadcast')
         {
             require('app/facades/ChatFacade').log(data.message,'update');
-        }
-        if(data.type ==='disconnect')
-        {
-            location.reload();
         }
         }
        this.socket.onclose = function() {
