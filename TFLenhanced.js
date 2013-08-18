@@ -27,39 +27,39 @@ TFLEnhancedModel = require('app/base/Class').extend({
             // Syntax: 'Search word' : 'Replace word',
             "Points" : "Points",
             "Now Playing" : "Now Playing",
-            "Time Remaining" : "Time Wasted",
+            "Time Remaining" : "Time Remaining",
             "Volume" : "Crank it up!",
             "Current DJ" : "Current DJ",
             "Crowd Approval" : "Crowd's Reaction",
-            "Fans":"Minions"
+            "Fans":"Slaves"
         };
         String.prototype.prepareRegex = function() {
             return this.replace(/([\[\]\^\&\$\.\(\)\?\/\\\+\{\}\|])/g, "\\$1");
         };
-        Lang.ui.buttonVotePositive = "http://i.imgur.com/AavorRZ.png";
-        Lang.ui.buttonVotePositiveSelected = "http://i.imgur.com/nPqYDEs.png";
+        Lang.ui.buttonVotePositive = "http://plug.dj/_/static/images/en/ButtonVotePositive.ca7fc3f.png";
+        Lang.ui.buttonVotePositiveSelected = "http://plug.dj/_/static/images/en/ButtonVotePositiveSelected.22f4c40.png";
         Lang.ui.buttonVotePositiveDisabled = "http://i.imgur.com/AavorRZ.png";
-        Lang.ui.buttonAddThis = "http://i.imgur.com/IwFRCVd.png";
+        Lang.ui.buttonAddThis = "http://plug.dj/_/static/images/en/ButtonAddThis.e097127.png";
         Lang.ui.buttonAddThisDisabled = "http://i.imgur.com/IwFRCVd.png";   
         Lang.ui.buttonSkipThis  = "http://i.imgur.com/kL3MvJm.png";
-        Lang.rollover.fans = "Minions"
-        Lang.messages.fanEnter = "Your minion %NAME% just joined the room!"
+        Lang.rollover.fans = "Slaves"
+        Lang.messages.fanEnter = "Your Slave %NAME% just joined the room!"
         Lang.messages.fanOf = "You are now a minion of %NAME%."
         Lang.messages.unFanOf = "You are no longer a minion of %NAME%."
-        Lang.messages.follow = "%NAME% is now your minion!"
+        Lang.messages.follow = "%NAME% is now your Slave!"
         Lang.messages.welcome = "Welcome to the bug.dj beta. Version %VERSION%"
-        Lang.messages.cap = "Capping fuckers at %COUNT%"
-        Lang.rollover.becomeFan = "Become a minion"
-        Lang.rollover.fans = "Minions"
+        Lang.messages.cap = "Capping lag at %COUNT%"
+        Lang.rollover.becomeFan = "Become a Slave"
+        Lang.rollover.fans = "Slaves"
         Lang.alerts.updateMesage ="bug.dj has been updated and requires a refresh. Click OK to refresh the page."
-        Lang.ui.buttonDJPlay = "http://i.imgur.com/SqU01C6.png";
-        Lang.ui.buttonDJLeave = "http://i.imgur.com/i4YkTFC.png";
-        Lang.ui.buttonDJWaitlistJoin = "http://i.imgur.com/SqU01C6.png";
-        Lang.ui.buttonDJWaitlistLeave = "http://i.imgur.com/i4YkTFC.png";
-        Lang.ui.buttonDJQuitShort = "http://i.imgur.com/i4YkTFC.png";
-        Lang.ui.buttonDJQuit = "http://i.imgur.com/i4YkTFC.png";
-        Lang.ui.buttonDJPlayShort = "http://i.imgur.com/SqU01C6.png";
-        Lang.rollover.host = "The Boss"
+        Lang.ui.buttonDJPlay = "http://plug.dj/_/static/images/en/ButtonDJPlay.6768d31.png";
+        Lang.ui.buttonDJLeave = "http://plug.dj/_/static/images/en/ButtonDJQuit.9a5254c.png";
+        Lang.ui.buttonDJWaitlistJoin = "http://plug.dj/_/static/images/en/ButtonDJPlay.6768d31.png";
+        Lang.ui.buttonDJWaitlistLeave = "http://plug.dj/_/static/images/en/ButtonDJQuit.9a5254c.png";
+        Lang.ui.buttonDJQuitShort = "http://plug.dj/_/static/images/en/ButtonDJQuit.9a5254c.png";
+        Lang.ui.buttonDJQuit = "http://plug.dj/_/static/images/en/ButtonDJQuit.9a5254c.png";
+        Lang.ui.buttonDJPlayShort = "http://plug.dj/_/static/images/en/ButtonDJPlay.6768d31.png";
+        Lang.rollover.host = "Da Baws o' Da Room"
         Lang.chat.help = "<strong>Chat Commands:</strong><br/>/em &nbsp; <em>Emote</em><br/>/me &nbsp; <em>Emote</em><br/>/clear &nbsp; <em>Clear Chat History</em><br/>/cap # &nbsp; <em>Limits the number of avatars rendered (1-200)</em><br/>/ts # &nbsp; <em>Chat timestamps (12, 24, 0)</em><br />/emoji on (or off) <em>Enable/disable Emojis</em><br /> /strobe on/off &nbsp; <em>Strobe light on/off</em><br /> /rave on/off &nbsp; <em>Lights out on/off</em><br />/close &nbsp; <em>Remove TFL Enhanced script</em> <br /> /Avatar # &nbsp; <em> change Halloween Avatars ( # = 1-13)</em> <br /> /Auto On &nbsp; <em> plugbot load </em>"
         $('#button-vote-negative').hide();
         $('#button-chat-popout').click(function(){setTimeout(function(){TFLEnhanced.initPopout()},500)});
